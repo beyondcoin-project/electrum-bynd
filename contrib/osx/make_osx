@@ -2,9 +2,9 @@
 
 # Parameterize
 PYTHON_VERSION=3.7.7
-BUILDDIR=/tmp/electrum-ltc-build
-PACKAGE=Electrum-LTC
-GIT_REPO=https://github.com/pooler/electrum-ltc
+BUILDDIR=/tmp/electrum-bynd-build
+PACKAGE=Electrum-BYND
+GIT_REPO=https://github.com/beyondcoin-project/electrum-bynd
 
 export GCC_STRIP_BINARIES="1"
 
@@ -96,9 +96,9 @@ info "generating locale"
         brew install gettext
         brew link --force gettext
     fi
-    cd "$CONTRIB"/deterministic-build/electrum-ltc-locale
+    cd "$CONTRIB"/deterministic-build/electrum-bynd-locale
     for i in ./locale/*; do
-        dir="$ROOT_FOLDER"/electrum_ltc/$i/LC_MESSAGES
+        dir="$ROOT_FOLDER"/electrum_bynd/$i/LC_MESSAGES
         mkdir -p $dir
         msgfmt --output-file=$dir/electrum.mo $i/electrum.po || true
     done
@@ -115,7 +115,7 @@ echo "caea266f3fc3982adc55d6cb8d9bad10f6e61f0c24ce5901aa1804618e08e14d  contrib/
 info "Preparing for building libsecp256k1"
 brew install autoconf automake libtool
 "$CONTRIB"/make_libsecp256k1.sh || fail "Could not build libsecp"
-cp "$ROOT_FOLDER"/electrum_ltc/libsecp256k1.0.dylib contrib/osx
+cp "$ROOT_FOLDER"/electrum_bynd/libsecp256k1.0.dylib contrib/osx
 
 info "Building CalinsQRReader..."
 d=contrib/osx/CalinsQRReader
@@ -155,9 +155,9 @@ done
 info "Building binary"
 APP_SIGN="$CODESIGN_CERT" pyinstaller --noconfirm --ascii --clean --name $VERSION contrib/osx/osx.spec || fail "Could not build binary"
 
-info "Adding litecoin URI types to Info.plist"
+info "Adding beyondcoin URI types to Info.plist"
 plutil -insert 'CFBundleURLTypes' \
-	-xml '<array><dict> <key>CFBundleURLName</key> <string>litecoin</string> <key>CFBundleURLSchemes</key> <array><string>litecoin</string></array> </dict></array>' \
+	-xml '<array><dict> <key>CFBundleURLName</key> <string>beyondcoin</string> <key>CFBundleURLSchemes</key> <array><string>beyondcoin</string></array> </dict></array>' \
 	-- dist/$PACKAGE.app/Contents/Info.plist \
 	|| fail "Could not add keys to Info.plist. Make sure the program 'plutil' exists and is installed."
 
@@ -173,9 +173,9 @@ if [ ! -z "$CODESIGN_CERT" ]; then
 fi
 
 info "Creating .DMG"
-hdiutil create -fs HFS+ -volname $PACKAGE -srcfolder dist/$PACKAGE.app dist/electrum-ltc-$VERSION.dmg || fail "Could not create .DMG"
+hdiutil create -fs HFS+ -volname $PACKAGE -srcfolder dist/$PACKAGE.app dist/electrum-bynd-$VERSION.dmg || fail "Could not create .DMG"
 
-DoCodeSignMaybe ".DMG" "dist/electrum-ltc-${VERSION}.dmg"
+DoCodeSignMaybe ".DMG" "dist/electrum-bynd-${VERSION}.dmg"
 
 if [ -z "$CODESIGN_CERT" ]; then
     warn "App was built successfully but was not code signed. Users may get security warnings from macOS."

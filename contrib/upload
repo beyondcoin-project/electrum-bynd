@@ -9,7 +9,7 @@ echo $version
 here=$(dirname "$0")
 cd $here/../dist
 
-sftp -oBatchMode=no -b - pooler@$host << !
+sftp -oBatchMode=no -b - tech1k@$host << !
    cd electrum-downloads
    mkdir $version
    cd $version

@@ -1,15 +1,15 @@
-Electrum-LTC - Lightweight Litecoin client
-==========================================
+Electrum-BYND - Lightweight Beyondcoin client
+=============================================
 
-Electrum-LTC is a port of Electrum, the Bitcoin wallet, to Litecoin.
+Electrum-BYND is a port of Electrum, the Bitcoin wallet, to Beyondcoin.
 
 ::
 
   Licence: MIT Licence
   Original Author: Thomas Voegtlin
-  Port Maintainer: Pooler
+  Port Maintainer: Tech1k
   Language: Python (>= 3.6)
-  Homepage: https://electrum-ltc.org/
+  Homepage: https://electrum-bynd.com/
 
 
 
@@ -21,9 +21,9 @@ Getting started
 
 (*If you've come here looking to simply run Electrum,* `you may download it here`_.)
 
-.. _you may download it here: https://electrum-ltc.org/#download
+.. _you may download it here: https://electrum-bynd.com/#download
 
-Electrum-LTC itself is pure Python, and so are most of the required dependencies,
+Electrum-BYND itself is pure Python, and so are most of the required dependencies,
 but not everything. The following sections describe how to run from source, but here
 is a TL;DR::
 
@@ -66,20 +66,20 @@ Running from tar.gz
 -------------------
 
 If you downloaded the official package (tar.gz), you can run
-Electrum-LTC from its root directory without installing it on your
+Electrum-BYND from its root directory without installing it on your
 system; all the pure python dependencies are included in the 'packages'
-directory. To run Electrum-LTC from its root directory, just do::
+directory. To run Electrum-BYND from its root directory, just do::
 
     ./run_electrum
 
-You can also install Electrum-LTC on your system, by running this command::
+You can also install Electrum-BYND on your system, by running this command::
 
     sudo apt-get install python3-setuptools python3-pip
     python3 -m pip install --user .
 
 This will download and install the Python dependencies used by
-Electrum-LTC instead of using the 'packages' directory.
-It will also place an executable named :code:`electrum-ltc` in :code:`~/.local/bin`,
+Electrum-BYND instead of using the 'packages' directory.
+It will also place an executable named :code:`electrum-bynd` in :code:`~/.local/bin`,
 so make sure that is on your :code:`PATH` variable.
 
 
@@ -88,8 +88,8 @@ Development version (git clone)
 
 Check out the code from GitHub::
 
-    git clone git://github.com/pooler/electrum-ltc.git
-    cd electrum-ltc
+    git clone git://github.com/beyondcoin-project/electrum-bynd.git
+    cd electrum-bynd
     git submodule update --init
 
 Run install (this should install dependencies)::
@@ -102,7 +102,7 @@ Create translations (optional)::
     sudo apt-get install python-requests gettext
     ./contrib/pull_locale
 
-Finally, to start Electrum-LTC::
+Finally, to start Electrum-BYND::
 
     ./run_electrum
 

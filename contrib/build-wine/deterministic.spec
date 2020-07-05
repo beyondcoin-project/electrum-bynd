@@ -12,7 +12,7 @@ else:
 
 PYHOME = 'c:/python3'
 
-home = 'C:\\electrum-ltc\\'
+home = 'C:\\electrum-bynd\\'
 
 # see https://github.com/pyinstaller/pyinstaller/issues/2005
 hiddenimports = []
@@ -36,13 +36,13 @@ binaries += [('C:/tmp/libsecp256k1-0.dll', '.')]
 binaries += [('C:/tmp/libusb-1.0.dll', '.')]
 
 datas = [
-    (home+'electrum_ltc/*.json', 'electrum_ltc'),
-    (home+'electrum_ltc/lnwire/*.csv', 'electrum_ltc/lnwire'),
-    (home+'electrum_ltc/wordlist/english.txt', 'electrum_ltc/wordlist'),
-    (home+'electrum_ltc/locale', 'electrum_ltc/locale'),
-    (home+'electrum_ltc/plugins', 'electrum_ltc/plugins'),
+    (home+'electrum_bynd/*.json', 'electrum_bynd'),
+    (home+'electrum_bynd/lnwire/*.csv', 'electrum_bynd/lnwire'),
+    (home+'electrum_bynd/wordlist/english.txt', 'electrum_bynd/wordlist'),
+    (home+'electrum_bynd/locale', 'electrum_bynd/locale'),
+    (home+'electrum_bynd/plugins', 'electrum_bynd/plugins'),
     ('C:\\Program Files (x86)\\ZBar\\bin\\', '.'),
-    (home+'electrum_ltc/gui/icons', 'electrum_ltc/gui/icons'),
+    (home+'electrum_bynd/gui/icons', 'electrum_bynd/gui/icons'),
 ]
 datas += collect_data_files('trezorlib')
 datas += collect_data_files('safetlib')
@@ -53,23 +53,23 @@ datas += collect_data_files('bitbox02')
 
 # We don't put these files in to actually include them in the script but to make the Analysis method scan them for imports
 a = Analysis([home+'run_electrum',
-              home+'electrum_ltc/gui/qt/main_window.py',
-              home+'electrum_ltc/gui/text.py',
-              home+'electrum_ltc/util.py',
-              home+'electrum_ltc/wallet.py',
-              home+'electrum_ltc/simple_config.py',
-              home+'electrum_ltc/bitcoin.py',
-              home+'electrum_ltc/blockchain.py',
-              home+'electrum_ltc/dnssec.py',
-              home+'electrum_ltc/commands.py',
-              home+'electrum_ltc/plugins/cosigner_pool/qt.py',
-              home+'electrum_ltc/plugins/email_requests/qt.py',
-              home+'electrum_ltc/plugins/trezor/qt.py',
-              home+'electrum_ltc/plugins/safe_t/client.py',
-              home+'electrum_ltc/plugins/safe_t/qt.py',
-              home+'electrum_ltc/plugins/keepkey/qt.py',
-              home+'electrum_ltc/plugins/ledger/qt.py',
-              home+'electrum_ltc/plugins/coldcard/qt.py',
+              home+'electrum_bynd/gui/qt/main_window.py',
+              home+'electrum_bynd/gui/text.py',
+              home+'electrum_bynd/util.py',
+              home+'electrum_bynd/wallet.py',
+              home+'electrum_bynd/simple_config.py',
+              home+'electrum_bynd/bitcoin.py',
+              home+'electrum_bynd/blockchain.py',
+              home+'electrum_bynd/dnssec.py',
+              home+'electrum_bynd/commands.py',
+              home+'electrum_bynd/plugins/cosigner_pool/qt.py',
+              home+'electrum_bynd/plugins/email_requests/qt.py',
+              home+'electrum_bynd/plugins/trezor/qt.py',
+              home+'electrum_bynd/plugins/safe_t/client.py',
+              home+'electrum_bynd/plugins/safe_t/qt.py',
+              home+'electrum_bynd/plugins/keepkey/qt.py',
+              home+'electrum_bynd/plugins/ledger/qt.py',
+              home+'electrum_bynd/plugins/coldcard/qt.py',
               #home+'packages/requests/utils.py'
               ],
              binaries=binaries,
@@ -117,11 +117,11 @@ exe_standalone = EXE(
     a.scripts,
     a.binaries,
     a.datas,
-    name=os.path.join('build\\pyi.win32\\electrum-ltc', cmdline_name + ".exe"),
+    name=os.path.join('build\\pyi.win32\\electrum-bynd', cmdline_name + ".exe"),
     debug=False,
     strip=None,
     upx=False,
-    icon=home+'electrum_ltc/gui/icons/electrum.ico',
+    icon=home+'electrum_bynd/gui/icons/electrum.ico',
     console=False)
     # console=True makes an annoying black box pop up, but it does make Electrum output command line commands, with this turned off no output will be given but commands can still be used
 
@@ -130,11 +130,11 @@ exe_portable = EXE(
     a.scripts,
     a.binaries,
     a.datas + [ ('is_portable', 'README.md', 'DATA' ) ],
-    name=os.path.join('build\\pyi.win32\\electrum-ltc', cmdline_name + "-portable.exe"),
+    name=os.path.join('build\\pyi.win32\\electrum-bynd', cmdline_name + "-portable.exe"),
     debug=False,
     strip=None,
     upx=False,
-    icon=home+'electrum_ltc/gui/icons/electrum.ico',
+    icon=home+'electrum_bynd/gui/icons/electrum.ico',
     console=False)
 
 #####
@@ -144,11 +144,11 @@ exe_dependent = EXE(
     pyz,
     a.scripts,
     exclude_binaries=True,
-    name=os.path.join('build\\pyi.win32\\electrum-ltc', cmdline_name),
+    name=os.path.join('build\\pyi.win32\\electrum-bynd', cmdline_name),
     debug=False,
     strip=None,
     upx=False,
-    icon=home+'electrum_ltc/gui/icons/electrum.ico',
+    icon=home+'electrum_bynd/gui/icons/electrum.ico',
     console=False)
 
 coll = COLLECT(
@@ -159,6 +159,6 @@ coll = COLLECT(
     strip=None,
     upx=True,
     debug=False,
-    icon=home+'electrum_ltc/gui/icons/electrum.ico',
+    icon=home+'electrum_bynd/gui/icons/electrum.ico',
     console=False,
-    name=os.path.join('dist', 'electrum-ltc'))
+    name=os.path.join('dist', 'electrum-bynd'))

@@ -1,0 +1,22 @@
+# If you want Electrum to appear in a Linux app launcher ("start menu"), install this by doing:
+# sudo desktop-file-install electrum-bynd.desktop
+
+[Desktop Entry]
+Comment=Lightweight Beyondcoin Client
+Exec=sh -c "PATH=\"\\$HOME/.local/bin:\\$PATH\"; electrum-bynd %u"
+GenericName[en_US]=Beyondcoin Wallet
+GenericName=Beyondcoin Wallet
+Icon=electrum-bynd
+Name[en_US]=Electrum Beyondcoin Wallet
+Name=Electrum Beyondcoin Wallet
+Categories=Finance;Network;
+StartupNotify=true
+StartupWMClass=electrum-bynd
+Terminal=false
+Type=Application
+MimeType=x-scheme-handler/beyondcoin;
+Actions=Testnet;
+
+[Desktop Action Testnet]
+Exec=sh -c "PATH=\"\\$HOME/.local/bin:\\$PATH\"; electrum-bynd --testnet %u"
+Name=Testnet mode

@@ -20,7 +20,7 @@ folder.
 2. Build image
 
     ```
-    $ sudo docker build -t electrum-ltc-wine-builder-img contrib/build-wine
+    $ sudo docker build -t electrum-bynd-wine-builder-img contrib/build-wine
     ```
 
     Note: see [this](https://stackoverflow.com/a/40516974/7499128) if having dns problems
@@ -35,19 +35,19 @@ folder.
         sudo rm -rf $FRESH_CLONE && \
         mkdir -p $FRESH_CLONE && \
         cd $FRESH_CLONE  && \
-        git clone https://github.com/pooler/electrum-ltc.git && \
-        cd electrum-ltc
+        git clone https://github.com/beyondcoin-project/electrum-bynd.git && \
+        cd electrum-bynd
     ```
 
     And then build from this directory:
     ```
     $ git checkout $REV
     $ sudo docker run -it \
-        --name electrum-ltc-wine-builder-cont \
-        -v $PWD:/opt/wine64/drive_c/electrum-ltc \
+        --name electrum-bynd-wine-builder-cont \
+        -v $PWD:/opt/wine64/drive_c/electrum-bynd \
         --rm \
-        --workdir /opt/wine64/drive_c/electrum-ltc/contrib/build-wine \
-        electrum-ltc-wine-builder-img \
+        --workdir /opt/wine64/drive_c/electrum-bynd/contrib/build-wine \
+        electrum-bynd-wine-builder-img \
         ./build.sh
     ```
 4. The generated binaries are in `./contrib/build-wine/dist`.
@@ -57,10 +57,10 @@ folder.
 Code Signing
 ============
 
-Electrum-LTC Windows builds are signed with a Microsoft Authenticode™ code signing
+Electrum-BYND Windows builds are signed with a Microsoft Authenticode™ code signing
 certificate in addition to the GPG-based signatures.
 
-The advantage of using Authenticode is that Electrum-LTC users won't receive a 
+The advantage of using Authenticode is that Electrum-BYND users won't receive a 
 Windows SmartScreen warning when starting it.
 
 The release signing procedure involves a signer (the holder of the
@@ -78,7 +78,7 @@ certificate/key) and one or multiple trusted verifiers:
 
 | Signer and verifiers:                                                                         |
 |-----------------------------------------------------------------------------------------------|
-| Upload signatures to 'electrum-ltc-signatures' repo, as `$version/$filename.$builder.asc`         |
+| Upload signatures to 'electrum-bynd-signatures' repo, as `$version/$filename.$builder.asc`    |
 
 
 
