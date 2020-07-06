@@ -195,7 +195,7 @@ class LNInvoice(Invoice):
         d = self.to_json()
         d.update({
             'pubkey': self._lnaddr.pubkey.serialize().hex(),
-            'amount_LTC': self._lnaddr.amount,
+            'amount_BYND': self._lnaddr.amount,
             'rhash': self._lnaddr.paymenthash.hex(),
             'description': self._lnaddr.get_description(),
             'exp': self._lnaddr.get_expiry(),

@@ -31,23 +31,23 @@ from typing import TYPE_CHECKING, Union, Optional, Callable, Any
 from PyQt5.QtCore import QObject, pyqtSignal
 from PyQt5.QtWidgets import QVBoxLayout, QLineEdit, QHBoxLayout, QLabel
 
-from electrum_ltc.gui.qt.password_dialog import PasswordLayout, PW_PASSPHRASE
-from electrum_ltc.gui.qt.util import (read_QIcon, WWLabel, OkButton, WindowModalDialog,
+from electrum_bynd.gui.qt.password_dialog import PasswordLayout, PW_PASSPHRASE
+from electrum_bynd.gui.qt.util import (read_QIcon, WWLabel, OkButton, WindowModalDialog,
                                       Buttons, CancelButton, TaskThread, char_width_in_lineedit,
                                       PasswordLineEdit)
-from electrum_ltc.gui.qt.main_window import StatusBarButton, ElectrumWindow
-from electrum_ltc.gui.qt.installwizard import InstallWizard
+from electrum_bynd.gui.qt.main_window import StatusBarButton, ElectrumWindow
+from electrum_bynd.gui.qt.installwizard import InstallWizard
 
-from electrum_ltc.i18n import _
-from electrum_ltc.logging import Logger
-from electrum_ltc.util import parse_URI, InvalidBitcoinURI, UserCancelled, UserFacingException
-from electrum_ltc.plugin import hook, DeviceUnpairableError
+from electrum_bynd.i18n import _
+from electrum_bynd.logging import Logger
+from electrum_bynd.util import parse_URI, InvalidBitcoinURI, UserCancelled, UserFacingException
+from electrum_bynd.plugin import hook, DeviceUnpairableError
 
 from .plugin import OutdatedHwFirmwareException, HW_PluginBase, HardwareHandlerBase
 
 if TYPE_CHECKING:
-    from electrum_ltc.wallet import Abstract_Wallet
-    from electrum_ltc.keystore import Hardware_KeyStore
+    from electrum_bynd.wallet import Abstract_Wallet
+    from electrum_bynd.keystore import Hardware_KeyStore
 
 
 # The trickiest thing about this handler was getting windows properly

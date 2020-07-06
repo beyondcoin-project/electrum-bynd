@@ -39,14 +39,14 @@ from PyQt5.QtWidgets import (QDialog, QLabel, QPushButton, QHBoxLayout, QVBoxLay
 import qrcode
 from qrcode import exceptions
 
-from electrum_ltc.simple_config import SimpleConfig
-from electrum_ltc.util import quantize_feerate
-from electrum_ltc.bitcoin import base_encode, NLOCKTIME_BLOCKHEIGHT_MAX
-from electrum_ltc.i18n import _
-from electrum_ltc.plugin import run_hook
-from electrum_ltc import simple_config
-from electrum_ltc.transaction import SerializationError, Transaction, PartialTransaction, PartialTxInput
-from electrum_ltc.logging import get_logger
+from electrum_bynd.simple_config import SimpleConfig
+from electrum_bynd.util import quantize_feerate
+from electrum_bynd.bitcoin import base_encode, NLOCKTIME_BLOCKHEIGHT_MAX
+from electrum_bynd.i18n import _
+from electrum_bynd.plugin import run_hook
+from electrum_bynd import simple_config
+from electrum_bynd.transaction import SerializationError, Transaction, PartialTransaction, PartialTxInput
+from electrum_bynd.logging import get_logger
 
 from .util import (MessageBoxMixin, read_QIcon, Buttons, icon_path,
                    MONOSPACE_FONT, ColorScheme, ButtonsLineEdit, text_dialog,
@@ -271,7 +271,7 @@ class BaseTxDialog(QDialog, MessageBoxMixin):
         tx = copy.deepcopy(self.tx)
         tx.add_info_from_wallet(self.wallet, include_xpubs_and_full_paths=True)
         # log warning if PSBT_*_BIP32_DERIVATION fields cannot be filled with full path due to missing info
-        from electrum_ltc.keystore import Xpub
+        from electrum_bynd.keystore import Xpub
         def is_ks_missing_info(ks):
             return (isinstance(ks, Xpub) and (ks.get_root_fingerprint() is None
                                               or ks.get_derivation_prefix() is None))

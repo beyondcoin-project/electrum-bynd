@@ -1,8 +1,8 @@
 import asyncio
 
-from electrum_ltc.ecc import ECPrivkey
-from electrum_ltc.lnutil import LNPeerAddr
-from electrum_ltc.lntransport import LNResponderTransport, LNTransport
+from electrum_bynd.ecc import ECPrivkey
+from electrum_bynd.lnutil import LNPeerAddr
+from electrum_bynd.lntransport import LNResponderTransport, LNTransport
 
 from . import ElectrumTestCase
 from .test_bitcoin import needs_test_with_all_chacha20_implementations

@@ -42,9 +42,9 @@ kivy.require('1.8.0')
 from kivy.logger import Logger
 
 if TYPE_CHECKING:
-    from electrum_ltc.simple_config import SimpleConfig
-    from electrum_ltc.daemon import Daemon
-    from electrum_ltc.plugin import Plugins
+    from electrum_bynd.simple_config import SimpleConfig
+    from electrum_bynd.daemon import Daemon
+    from electrum_bynd.plugin import Plugins
 
 
 

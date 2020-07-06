@@ -73,11 +73,11 @@ def inv_dict(d):
 ca_path = certifi.where()
 
 
-base_units = {'LTC':8, 'mLTC':5, 'uLTC':2, 'sat':0}
+base_units = {'BYND':8, 'mBYND':5, 'uBYND':2, 'sat':0}
 base_units_inverse = inv_dict(base_units)
-base_units_list = ['LTC', 'mLTC', 'uLTC', 'sat']  # list(dict) does not guarantee order
+base_units_list = ['BYND', 'mBYND', 'uBYND', 'sat']  # list(dict) does not guarantee order
 
-DECIMAL_POINT_DEFAULT = 8  # LTC
+DECIMAL_POINT_DEFAULT = 8  # BYND
 
 
 class UnknownBaseUnit(Exception): pass
@@ -395,7 +395,7 @@ def android_ext_dir():
     return primary_external_storage_path()
 
 def android_backup_dir():
-    d = os.path.join(android_ext_dir(), 'org.electrum_ltc.electrum_ltc')
+    d = os.path.join(android_ext_dir(), 'org.electrum_bynd.electrum_bynd')
     if not os.path.exists(d):
         os.mkdir(d)
     return d
@@ -534,11 +534,11 @@ def user_dir():
     elif 'ANDROID_DATA' in os.environ:
         return android_data_dir()
     elif os.name == 'posix':
-        return os.path.join(os.environ["HOME"], ".electrum-ltc")
+        return os.path.join(os.environ["HOME"], ".electrum-bynd")
     elif "APPDATA" in os.environ:
-        return os.path.join(os.environ["APPDATA"], "Electrum-LTC")
+        return os.path.join(os.environ["APPDATA"], "Electrum-BYND")
     elif "LOCALAPPDATA" in os.environ:
-        return os.path.join(os.environ["LOCALAPPDATA"], "Electrum-LTC")
+        return os.path.join(os.environ["LOCALAPPDATA"], "Electrum-BYND")
     else:
         #raise Exception("No home directory found in environment variables.")
         return
@@ -712,7 +712,7 @@ def time_difference(distance_in_time, include_seconds):
 
 mainnet_block_explorers = {
     'Bchain.info': ('https://bchain.info/',
-                        {'tx': 'LTC/tx/', 'addr': 'LTC/addr/'}),
+                        {'tx': 'BYND/tx/', 'addr': 'BYND/addr/'}),
     'Bitaps.com': ('https://ltc.bitaps.com/',
                         {'tx': '', 'addr': ''}),
     'Bitupper Explorer': ('https://bitupper.com/en/explorer/litecoin/',
@@ -723,7 +723,7 @@ mainnet_block_explorers = {
                         {'tx': 'tx/', 'addr': 'address/'}),
     'explorer.litecoin.net': ('http://explorer.litecoin.net/',
                         {'tx': 'tx/', 'addr': 'address/'}),
-    'LiteCore': ('https://insight.litecore.io/',
+    'BeyondCore': ('https://insight.beyondcore.io/',
                         {'tx': 'tx/', 'addr': 'address/'}),
     'SoChain': ('https://chain.so/',
                         {'tx': 'tx/LTC/', 'addr': 'address/LTC/'}),
@@ -734,7 +734,7 @@ mainnet_block_explorers = {
 testnet_block_explorers = {
     'Bitaps.com': ('https://tltc.bitaps.com/',
                        {'tx': '', 'addr': ''}),
-    'LiteCore': ('https://testnet.litecore.io/',
+    'BeyondCore': ('https://testnet.beyondcore.io/',
                         {'tx': 'tx/', 'addr': 'address/'}),
     'SoChain': ('https://chain.so/',
                         {'tx': 'tx/LTCTEST/', 'addr': 'address/LTCTEST/'}),
@@ -748,7 +748,7 @@ def block_explorer_info():
 
 def block_explorer(config: 'SimpleConfig') -> str:
     from . import constants
-    default_ = 'Blockchair.com' if not constants.net.TESTNET else 'LiteCore'
+    default_ = 'Blockchair.com' if not constants.net.TESTNET else 'BeyondCore'
     be_key = config.get('block_explorer', default_)
     be = block_explorer_info().get(be_key)
     return be_key if be is not None else default_
@@ -785,12 +785,12 @@ def parse_URI(uri: str, on_pr: Callable = None, *, loop=None) -> dict:
 
     if ':' not in uri:
         if not bitcoin.is_address(uri):
-            raise InvalidBitcoinURI("Not a litecoin address")
+            raise InvalidBitcoinURI("Not a beyondcoin address")
         return {'address': uri}
 
     u = urllib.parse.urlparse(uri)
-    if u.scheme != 'litecoin':
-        raise InvalidBitcoinURI("Not a litecoin URI")
+    if u.scheme != 'beyondcoin':
+        raise InvalidBitcoinURI("Not a beyondcoin URI")
     address = u.path
 
     # python for android fails to parse query
@@ -807,7 +807,7 @@ def parse_URI(uri: str, on_pr: Callable = None, *, loop=None) -> dict:
     out = {k: v[0] for k, v in pq.items()}
     if address:
         if not bitcoin.is_address(address):
-            raise InvalidBitcoinURI(f"Invalid litecoin address: {address}")
+            raise InvalidBitcoinURI(f"Invalid beyondcoin address: {address}")
         out['address'] = address
     if 'amount' in out:
         am = out['amount']
@@ -877,7 +877,7 @@ def create_bip21_uri(addr, amount_sat: Optional[int], message: Optional[str],
             raise Exception(f"illegal key for URI: {repr(k)}")
         v = urllib.parse.quote(v)
         query.append(f"{k}={v}")
-    p = urllib.parse.ParseResult(scheme='litecoin', netloc='', path=addr, params='', query='&'.join(query), fragment='')
+    p = urllib.parse.ParseResult(scheme='beyondcoin', netloc='', path=addr, params='', query='&'.join(query), fragment='')
     return str(urllib.parse.urlunparse(p))
 
 

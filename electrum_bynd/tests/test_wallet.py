@@ -7,15 +7,15 @@ from decimal import Decimal
 import time
 
 from io import StringIO
-from electrum_ltc.storage import WalletStorage
-from electrum_ltc.wallet_db import FINAL_SEED_VERSION
-from electrum_ltc.wallet import (Abstract_Wallet, Standard_Wallet, create_new_wallet,
+from electrum_bynd.storage import WalletStorage
+from electrum_bynd.wallet_db import FINAL_SEED_VERSION
+from electrum_bynd.wallet import (Abstract_Wallet, Standard_Wallet, create_new_wallet,
                                  restore_wallet_from_text, Imported_Wallet)
-from electrum_ltc.exchange_rate import ExchangeBase, FxThread
-from electrum_ltc.util import TxMinedInfo
-from electrum_ltc.bitcoin import COIN
-from electrum_ltc.wallet_db import WalletDB
-from electrum_ltc.simple_config import SimpleConfig
+from electrum_bynd.exchange_rate import ExchangeBase, FxThread
+from electrum_bynd.util import TxMinedInfo
+from electrum_bynd.bitcoin import COIN
+from electrum_bynd.wallet_db import WalletDB
+from electrum_bynd.simple_config import SimpleConfig
 
 from . import ElectrumTestCase
 

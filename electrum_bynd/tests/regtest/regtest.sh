@@ -8,7 +8,7 @@ alice="./run_electrum --regtest -D /tmp/alice"
 bob="./run_electrum --regtest -D /tmp/bob"
 carol="./run_electrum --regtest -D /tmp/carol"
 
-bitcoin_cli="litecoin-cli -rpcuser=doggman -rpcpassword=donkey -rpcport=18554 -regtest"
+bitcoin_cli="beyondcoin-cli -rpcuser=doggman -rpcpassword=donkey -rpcport=18554 -regtest"
 
 function new_blocks()
 {

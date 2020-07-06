@@ -16,23 +16,23 @@ from PyQt5.QtWidgets import (QWidget, QDialog, QLabel, QHBoxLayout, QMessageBox,
                              QVBoxLayout, QLineEdit, QFileDialog, QPushButton,
                              QGridLayout, QSlider, QScrollArea, QApplication)
 
-from electrum_ltc.wallet import Wallet, Abstract_Wallet
-from electrum_ltc.storage import WalletStorage, StorageReadWriteError
-from electrum_ltc.util import UserCancelled, InvalidPassword, WalletFileException, get_new_wallet_name
-from electrum_ltc.base_wizard import BaseWizard, HWD_SETUP_DECRYPT_WALLET, GoBack, ReRunDialog
-from electrum_ltc.network import Network
-from electrum_ltc.i18n import _
+from electrum_bynd.wallet import Wallet, Abstract_Wallet
+from electrum_bynd.storage import WalletStorage, StorageReadWriteError
+from electrum_bynd.util import UserCancelled, InvalidPassword, WalletFileException, get_new_wallet_name
+from electrum_bynd.base_wizard import BaseWizard, HWD_SETUP_DECRYPT_WALLET, GoBack, ReRunDialog
+from electrum_bynd.network import Network
+from electrum_bynd.i18n import _
 
 from .seed_dialog import SeedLayout, KeysLayout
 from .network_dialog import NetworkChoiceLayout
 from .util import (MessageBoxMixin, Buttons, icon_path, ChoicesLayout, WWLabel,
                    InfoButton, char_width_in_lineedit, PasswordLineEdit)
 from .password_dialog import PasswordLayout, PasswordLayoutForHW, PW_NEW
-from electrum_ltc.plugin import run_hook, Plugins
+from electrum_bynd.plugin import run_hook, Plugins
 
 if TYPE_CHECKING:
-    from electrum_ltc.simple_config import SimpleConfig
-    from electrum_ltc.wallet_db import WalletDB
+    from electrum_bynd.simple_config import SimpleConfig
+    from electrum_bynd.wallet_db import WalletDB
     from . import ElectrumGui
 
 
@@ -45,8 +45,8 @@ MSG_HW_STORAGE_ENCRYPTION = _("Set wallet file encryption.") + '\n'\
 WIF_HELP_TEXT = (_('WIF keys are typed in Electrum, based on script type.') + '\n\n' +
                  _('A few examples') + ':\n' +
                  'p2pkh:T4PsyoR5gC8B...       \t-> LXqi2tzER...\n' +
-                 'p2wpkh-p2sh:T4PsyoR5gC8B... \t-> MUuWxSpVC...\n' +
-                 'p2wpkh:T4PsyoR5gC8B...      \t-> ltc1q3fjf...')
+                 'p2wpkh-p2sh:T4PsyoR5gC8B... \t-> BUuWxSpVC...\n' +
+                 'p2wpkh:T4PsyoR5gC8B...      \t-> bynd1q3fjf...')
 # note: full key is T4PsyoR5gC8BGEoTe8So7YQWPnvdkqTJqRVpLoMmZVqBsunDdeuJ
 MSG_PASSPHRASE_WARN_ISSUE4566 = _("Warning") + ": "\
                               + _("You have multiple consecutive whitespaces or leading/trailing "
@@ -149,7 +149,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
     def __init__(self, config: 'SimpleConfig', app: QApplication, plugins: 'Plugins', *, gui_object: 'ElectrumGui'):
         QDialog.__init__(self, None)
         BaseWizard.__init__(self, config, plugins)
-        self.setWindowTitle('Electrum-LTC  -  ' + _('Install Wizard'))
+        self.setWindowTitle('Electrum-BYND  -  ' + _('Install Wizard'))
         self.app = app
         self.config = config
         self.gui_thread = gui_object.gui_thread
@@ -192,7 +192,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
         hbox.setStretchFactor(scroll, 1)
         outer_vbox.addLayout(hbox)
         outer_vbox.addLayout(Buttons(self.back_button, self.next_button))
-        self.set_icon('electrum-ltc.png')
+        self.set_icon('electrum-bynd.png')
         self.show()
         self.raise_()
         self.refresh_gui()  # Need for QT on MacOSX.  Lame.
@@ -230,7 +230,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
         vbox_create_new.setContentsMargins(0, 0, 0, 0)
         vbox.addWidget(widget_create_new)
 
-        self.set_layout(vbox, title=_('Electrum-LTC wallet'))
+        self.set_layout(vbox, title=_('Electrum-BYND wallet'))
 
         temp_storage = None  # type: Optional[WalletStorage]
         wallet_folder = os.path.dirname(path)

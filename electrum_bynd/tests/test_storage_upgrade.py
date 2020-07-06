@@ -3,9 +3,9 @@ import tempfile
 import os
 import json
 
-from electrum_ltc.wallet_db import WalletDB
-from electrum_ltc.wallet import Wallet
-from electrum_ltc import constants
+from electrum_bynd.wallet_db import WalletDB
+from electrum_bynd.wallet import Wallet
+from electrum_bynd import constants
 
 from .test_wallet import WalletTestCase
 

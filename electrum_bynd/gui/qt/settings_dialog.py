@@ -31,18 +31,18 @@ from PyQt5.QtWidgets import (QComboBox,  QTabWidget,
                              QVBoxLayout, QGridLayout, QLineEdit,
                              QPushButton, QWidget)
 
-from electrum_ltc.i18n import _
-from electrum_ltc import util, coinchooser, paymentrequest
-from electrum_ltc.util import base_units_list
+from electrum_bynd.i18n import _
+from electrum_bynd import util, coinchooser, paymentrequest
+from electrum_bynd.util import base_units_list
 
 from .util import (ColorScheme, WindowModalDialog, HelpLabel, Buttons,
                    CloseButton)
 
-from electrum_ltc.i18n import languages
-from electrum_ltc import qrscanner
+from electrum_bynd.i18n import languages
+from electrum_bynd import qrscanner
 
 if TYPE_CHECKING:
-    from electrum_ltc.simple_config import SimpleConfig
+    from electrum_bynd.simple_config import SimpleConfig
     from .main_window import ElectrumWindow
 
 
@@ -182,7 +182,7 @@ Use this if you want your local watchtower to keep running after you close your 
         # units
         units = base_units_list
         msg = (_('Base unit of your wallet.')
-               + '\n1 LTC = 1000 mLTC. 1 mLTC = 1000 uLTC. 1 uLTC = 100 sat.\n'
+               + '\n1 BYND = 1000 mBYND. 1 mBYND = 1000 uBYND. 1 uBYND = 100 sat.\n'
                + _('This setting affects the Send tab, and all balance related fields.'))
         unit_label = HelpLabel(_('Base unit') + ':', msg)
         unit_combo = QComboBox()

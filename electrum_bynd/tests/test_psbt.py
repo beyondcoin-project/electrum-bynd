@@ -1,8 +1,8 @@
 from pprint import pprint
 import unittest
 
-from electrum_ltc import constants
-from electrum_ltc.transaction import (tx_from_any, PartialTransaction, BadHeaderMagic, UnexpectedEndOfStream,
+from electrum_bynd import constants
+from electrum_bynd.transaction import (tx_from_any, PartialTransaction, BadHeaderMagic, UnexpectedEndOfStream,
                                       SerializationError, PSBTInputConsistencyFailure)
 
 from . import ElectrumTestCase, TestCaseForTestnet

@@ -8,11 +8,11 @@ from kivy.core.window import Window
 from kivy.uix.recycleview import RecycleView
 from kivy.uix.boxlayout import BoxLayout
 
-from electrum_ltc.gui.kivy.i18n import _
+from electrum_bynd.gui.kivy.i18n import _
 
 if TYPE_CHECKING:
     from ...main_window import ElectrumWindow
-    from electrum_ltc.transaction import TxOutput
+    from electrum_bynd.transaction import TxOutput
 
 
 class AnimatedPopup(Factory.Popup):

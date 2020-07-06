@@ -7,16 +7,16 @@ import traceback
 from typing import TYPE_CHECKING, Optional
 import struct
 
-from electrum_ltc import bip32
-from electrum_ltc.bip32 import BIP32Node, InvalidMasterKeyVersionBytes
-from electrum_ltc.i18n import _
-from electrum_ltc.plugin import Device, hook
-from electrum_ltc.keystore import Hardware_KeyStore, KeyStoreWithMPK
-from electrum_ltc.transaction import PartialTransaction
-from electrum_ltc.wallet import Standard_Wallet, Multisig_Wallet, Abstract_Wallet
-from electrum_ltc.util import bfh, bh2u, versiontuple, UserFacingException
-from electrum_ltc.base_wizard import ScriptTypeNotSupported
-from electrum_ltc.logging import get_logger
+from electrum_bynd import bip32
+from electrum_bynd.bip32 import BIP32Node, InvalidMasterKeyVersionBytes
+from electrum_bynd.i18n import _
+from electrum_bynd.plugin import Device, hook
+from electrum_bynd.keystore import Hardware_KeyStore, KeyStoreWithMPK
+from electrum_bynd.transaction import PartialTransaction
+from electrum_bynd.wallet import Standard_Wallet, Multisig_Wallet, Abstract_Wallet
+from electrum_bynd.util import bfh, bh2u, versiontuple, UserFacingException
+from electrum_bynd.base_wizard import ScriptTypeNotSupported
+from electrum_bynd.logging import get_logger
 
 from ..hw_wallet import HW_PluginBase, HardwareClientBase
 from ..hw_wallet.plugin import LibraryFoundButUnusable, only_hook_if_libraries_available

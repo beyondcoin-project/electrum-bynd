@@ -28,12 +28,12 @@ from typing import TYPE_CHECKING, Optional, Union
 
 from PyQt5.QtWidgets import  QVBoxLayout, QLabel, QGridLayout, QPushButton, QLineEdit
 
-from electrum_ltc.i18n import _
-from electrum_ltc.util import NotEnoughFunds, NoDynamicFeeEstimates
-from electrum_ltc.plugin import run_hook
-from electrum_ltc.transaction import Transaction, PartialTransaction
-from electrum_ltc.simple_config import FEERATE_WARNING_HIGH_FEE, FEE_RATIO_HIGH_WARNING
-from electrum_ltc.wallet import InternalAddressCorruption
+from electrum_bynd.i18n import _
+from electrum_bynd.util import NotEnoughFunds, NoDynamicFeeEstimates
+from electrum_bynd.plugin import run_hook
+from electrum_bynd.transaction import Transaction, PartialTransaction
+from electrum_bynd.simple_config import FEERATE_WARNING_HIGH_FEE, FEE_RATIO_HIGH_WARNING
+from electrum_bynd.wallet import InternalAddressCorruption
 
 from .util import (WindowModalDialog, ColorScheme, HelpLabel, Buttons, CancelButton,
                    BlockingWaitingDialog, PasswordLineEdit)
@@ -137,7 +137,7 @@ class ConfirmTxDialog(TxEditor, WindowModalDialog):
         grid.addWidget(QLabel(_("Amount to be sent") + ": "), 0, 0)
         grid.addWidget(self.amount_label, 0, 1)
 
-        msg = _('Litecoin transactions are in general not free. A transaction fee is paid by the sender of the funds.') + '\n\n'\
+        msg = _('Beyondcoin transactions are in general not free. A transaction fee is paid by the sender of the funds.') + '\n\n'\
               + _('The amount of fee can be decided freely by the sender. However, transactions with low fees take more time to be processed.') + '\n\n'\
               + _('A suggested fee is automatically added to this field. You may override it. The suggested fee increases with the size of the transaction.')
         self.fee_label = QLabel('')

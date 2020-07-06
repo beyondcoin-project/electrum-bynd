@@ -8,23 +8,23 @@ from kivy.lang import Builder
 from decimal import Decimal
 from kivy.clock import Clock
 
-from electrum_ltc.util import InvalidPassword
-from electrum_ltc.wallet import WalletStorage, Wallet
-from electrum_ltc.gui.kivy.i18n import _
-from electrum_ltc.wallet_db import WalletDB
+from electrum_bynd.util import InvalidPassword
+from electrum_bynd.wallet import WalletStorage, Wallet
+from electrum_bynd.gui.kivy.i18n import _
+from electrum_bynd.wallet_db import WalletDB
 
 from .wallets import WalletDialog
 
 if TYPE_CHECKING:
     from ...main_window import ElectrumWindow
-    from electrum_ltc.wallet import Abstract_Wallet
-    from electrum_ltc.storage import WalletStorage
+    from electrum_bynd.wallet import Abstract_Wallet
+    from electrum_bynd.storage import WalletStorage
 
 Builder.load_string('''
 
 <PasswordDialog@Popup>
     id: popup
-    title: 'Electrum-LTC'
+    title: 'Electrum-BYND'
     message: ''
     basename:''
     is_change: False
@@ -47,7 +47,7 @@ Builder.load_string('''
             IconButton:
                 size_hint: 0.15, None
                 height: '40dp'
-                icon: 'atlas://electrum_ltc/gui/kivy/theming/light/btn_create_account'
+                icon: 'atlas://electrum_bynd/gui/kivy/theming/light/btn_create_account'
                 on_release: root.select_file()
                 disabled: root.is_change
                 opacity: 0 if root.is_change else 1
@@ -81,7 +81,7 @@ Builder.load_string('''
             IconButton:
                 height: '40dp'
                 size_hint: 0.15, None
-                icon: 'atlas://electrum_ltc/gui/kivy/theming/light/eye1'
+                icon: 'atlas://electrum_bynd/gui/kivy/theming/light/eye1'
                 icon_size: '40dp'
                 on_release:
                     textinput_generic_password.password = False if textinput_generic_password.password else True
@@ -105,7 +105,7 @@ Builder.load_string('''
 
 <PincodeDialog@Popup>
     id: popup
-    title: 'Electrum-LTC'
+    title: 'Electrum-BYND'
     message: ''
     basename:''
     BoxLayout:
@@ -184,7 +184,7 @@ class AbstractPasswordDialog(Factory.Popup):
         self.is_change = is_change
         self.pw = None
         self.new_password = None
-        self.title = 'Electrum-LTC'
+        self.title = 'Electrum-BYND'
         self.level = 1 if is_change and not has_password else 0
         self.basename = basename
         self.update_screen()

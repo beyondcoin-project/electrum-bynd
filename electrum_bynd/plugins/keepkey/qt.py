@@ -8,11 +8,11 @@ from PyQt5.QtWidgets import (QVBoxLayout, QLabel, QGridLayout, QPushButton,
                              QTextEdit, QLineEdit, QRadioButton, QCheckBox, QWidget,
                              QMessageBox, QFileDialog, QSlider, QTabWidget)
 
-from electrum_ltc.gui.qt.util import (WindowModalDialog, WWLabel, Buttons, CancelButton,
+from electrum_bynd.gui.qt.util import (WindowModalDialog, WWLabel, Buttons, CancelButton,
                                       OkButton, CloseButton)
-from electrum_ltc.i18n import _
-from electrum_ltc.plugin import hook
-from electrum_ltc.util import bh2u
+from electrum_bynd.i18n import _
+from electrum_bynd.plugin import hook
+from electrum_bynd.util import bh2u
 
 from ..hw_wallet.qt import QtHandlerBase, QtPluginBase
 from ..hw_wallet.plugin import only_hook_if_libraries_available

@@ -23,28 +23,28 @@ from kivy.factory import Factory
 from kivy.utils import platform
 from kivy.logger import Logger
 
-from electrum_ltc.util import profiler, parse_URI, format_time, InvalidPassword, NotEnoughFunds, Fiat
-from electrum_ltc.invoices import (PR_TYPE_ONCHAIN, PR_TYPE_LN, PR_DEFAULT_EXPIRATION_WHEN_CREATING,
+from electrum_bynd.util import profiler, parse_URI, format_time, InvalidPassword, NotEnoughFunds, Fiat
+from electrum_bynd.invoices import (PR_TYPE_ONCHAIN, PR_TYPE_LN, PR_DEFAULT_EXPIRATION_WHEN_CREATING,
                                    PR_PAID, PR_UNKNOWN, PR_EXPIRED, PR_INFLIGHT,
                                    LNInvoice, pr_expiration_values, Invoice, OnchainInvoice)
-from electrum_ltc import bitcoin, constants
-from electrum_ltc.transaction import Transaction, tx_from_any, PartialTransaction, PartialTxOutput
-from electrum_ltc.util import parse_URI, InvalidBitcoinURI, TxMinedInfo, maybe_extract_bolt11_invoice
-from electrum_ltc.plugin import run_hook
-from electrum_ltc.wallet import InternalAddressCorruption
-from electrum_ltc import simple_config
-from electrum_ltc.simple_config import FEERATE_WARNING_HIGH_FEE, FEE_RATIO_HIGH_WARNING
-from electrum_ltc.lnaddr import lndecode
-from electrum_ltc.lnutil import RECEIVED, SENT, PaymentFailure
+from electrum_bynd import bitcoin, constants
+from electrum_bynd.transaction import Transaction, tx_from_any, PartialTransaction, PartialTxOutput
+from electrum_bynd.util import parse_URI, InvalidBitcoinURI, TxMinedInfo, maybe_extract_bolt11_invoice
+from electrum_bynd.plugin import run_hook
+from electrum_bynd.wallet import InternalAddressCorruption
+from electrum_bynd import simple_config
+from electrum_bynd.simple_config import FEERATE_WARNING_HIGH_FEE, FEE_RATIO_HIGH_WARNING
+from electrum_bynd.lnaddr import lndecode
+from electrum_bynd.lnutil import RECEIVED, SENT, PaymentFailure
 
 from .dialogs.question import Question
 from .dialogs.lightning_open_channel import LightningOpenChannelDialog
 
-from electrum_ltc.gui.kivy.i18n import _
+from electrum_bynd.gui.kivy.i18n import _
 
 if TYPE_CHECKING:
-    from electrum_ltc.gui.kivy.main_window import ElectrumWindow
-    from electrum_ltc.paymentrequest import PaymentRequest
+    from electrum_bynd.gui.kivy.main_window import ElectrumWindow
+    from electrum_bynd.paymentrequest import PaymentRequest
 
 
 class HistoryRecycleView(RecycleView):
@@ -96,9 +96,9 @@ TX_ICONS = [
 ]
 
 
-Builder.load_file('electrum_ltc/gui/kivy/uix/ui_screens/history.kv')
-Builder.load_file('electrum_ltc/gui/kivy/uix/ui_screens/send.kv')
-Builder.load_file('electrum_ltc/gui/kivy/uix/ui_screens/receive.kv')
+Builder.load_file('electrum_bynd/gui/kivy/uix/ui_screens/history.kv')
+Builder.load_file('electrum_bynd/gui/kivy/uix/ui_screens/send.kv')
+Builder.load_file('electrum_bynd/gui/kivy/uix/ui_screens/receive.kv')
 
 
 class HistoryScreen(CScreen):
@@ -132,7 +132,7 @@ class HistoryScreen(CScreen):
         if is_lightning:
             status = 0
             status_str = 'unconfirmed' if timestamp is None else format_time(int(timestamp))
-            icon = "atlas://electrum_ltc/gui/kivy/theming/light/lightning"
+            icon = "atlas://electrum_bynd/gui/kivy/theming/light/lightning"
             message = tx_item['label']
             fee_msat = tx_item['fee_msat']
             fee = int(fee_msat/1000) if fee_msat else None
@@ -144,7 +144,7 @@ class HistoryScreen(CScreen):
                                         conf=tx_item['confirmations'],
                                         timestamp=tx_item['timestamp'])
             status, status_str = self.app.wallet.get_tx_status(tx_hash, tx_mined_info)
-            icon = "atlas://electrum_ltc/gui/kivy/theming/light/" + TX_ICONS[status]
+            icon = "atlas://electrum_bynd/gui/kivy/theming/light/" + TX_ICONS[status]
             message = tx_item['label'] or tx_hash
             fee = tx_item['fee_sat']
             fee_text = '' if fee is None else 'fee: %d sat'%fee
@@ -291,7 +291,7 @@ class SendScreen(CScreen):
     def read_invoice(self):
         address = str(self.address)
         if not address:
-            self.app.show_error(_('Recipient not specified.') + ' ' + _('Please scan a Litecoin address or a payment request'))
+            self.app.show_error(_('Recipient not specified.') + ' ' + _('Please scan a Beyondcoin address or a payment request'))
             return
         if not self.amount:
             self.app.show_error(_('Please enter an amount'))
@@ -309,7 +309,7 @@ class SendScreen(CScreen):
                 outputs = self.payment_request.get_outputs()
             else:
                 if not bitcoin.is_address(address):
-                    self.app.show_error(_('Invalid Litecoin Address') + ':\n' + address)
+                    self.app.show_error(_('Invalid Beyondcoin Address') + ':\n' + address)
                     return
                 outputs = [PartialTxOutput.from_address_and_value(address, amount)]
             return self.app.wallet.create_invoice(
@@ -454,7 +454,7 @@ class ReceiveScreen(CScreen):
             self.status = _('Payment received') if status == PR_PAID else ''
 
     def get_URI(self):
-        from electrum_ltc.util import create_bip21_uri
+        from electrum_bynd.util import create_bip21_uri
         amount = self.amount
         if amount:
             a, u = self.amount.split()

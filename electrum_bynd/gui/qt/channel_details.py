@@ -5,14 +5,14 @@ import PyQt5.QtWidgets as QtWidgets
 import PyQt5.QtCore as QtCore
 from PyQt5.QtWidgets import QLabel, QLineEdit
 
-from electrum_ltc import util
-from electrum_ltc.i18n import _
-from electrum_ltc.util import bh2u, format_time
-from electrum_ltc.lnutil import format_short_channel_id, LOCAL, REMOTE, UpdateAddHtlc, Direction
-from electrum_ltc.lnchannel import htlcsum, Channel, AbstractChannel
-from electrum_ltc.lnaddr import LnAddr, lndecode
-from electrum_ltc.bitcoin import COIN
-from electrum_ltc.wallet import Abstract_Wallet
+from electrum_bynd import util
+from electrum_bynd.i18n import _
+from electrum_bynd.util import bh2u, format_time
+from electrum_bynd.lnutil import format_short_channel_id, LOCAL, REMOTE, UpdateAddHtlc, Direction
+from electrum_bynd.lnchannel import htlcsum, Channel, AbstractChannel
+from electrum_bynd.lnaddr import LnAddr, lndecode
+from electrum_bynd.bitcoin import COIN
+from electrum_bynd.wallet import Abstract_Wallet
 
 from .util import Buttons, CloseButton, ButtonsLineEdit
 

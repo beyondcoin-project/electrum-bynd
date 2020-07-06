@@ -4,18 +4,18 @@ import sys
 import traceback
 from typing import Optional, Tuple
 
-from electrum_ltc import ecc, constants
-from electrum_ltc import bip32
-from electrum_ltc.crypto import hash_160
-from electrum_ltc.bitcoin import int_to_hex, var_int, is_segwit_script_type
-from electrum_ltc.bip32 import BIP32Node, convert_bip32_intpath_to_strpath
-from electrum_ltc.i18n import _
-from electrum_ltc.keystore import Hardware_KeyStore
-from electrum_ltc.transaction import Transaction, PartialTransaction, PartialTxInput, PartialTxOutput
-from electrum_ltc.wallet import Standard_Wallet
-from electrum_ltc.util import bfh, bh2u, versiontuple, UserFacingException
-from electrum_ltc.base_wizard import ScriptTypeNotSupported
-from electrum_ltc.logging import get_logger
+from electrum_bynd import ecc, constants
+from electrum_bynd import bip32
+from electrum_bynd.crypto import hash_160
+from electrum_bynd.bitcoin import int_to_hex, var_int, is_segwit_script_type
+from electrum_bynd.bip32 import BIP32Node, convert_bip32_intpath_to_strpath
+from electrum_bynd.i18n import _
+from electrum_bynd.keystore import Hardware_KeyStore
+from electrum_bynd.transaction import Transaction, PartialTransaction, PartialTxInput, PartialTxOutput
+from electrum_bynd.wallet import Standard_Wallet
+from electrum_bynd.util import bfh, bh2u, versiontuple, UserFacingException
+from electrum_bynd.base_wizard import ScriptTypeNotSupported
+from electrum_bynd.logging import get_logger
 
 from ..hw_wallet import HW_PluginBase, HardwareClientBase
 from ..hw_wallet.plugin import is_any_tx_output_on_change_branch, validate_op_return_output, LibraryFoundButUnusable
@@ -39,7 +39,7 @@ except ImportError:
 
 MSG_NEEDS_FW_UPDATE_GENERIC = _('Firmware version too old. Please update at') + \
                       ' https://www.ledgerwallet.com'
-MSG_NEEDS_FW_UPDATE_SEGWIT = _('Firmware version (or "Litecoin" app) too old for Segwit support. Please update at') + \
+MSG_NEEDS_FW_UPDATE_SEGWIT = _('Firmware version (or "Beyondcoin" app) too old for Segwit support. Please update at') + \
                       ' https://www.ledgerwallet.com'
 MULTI_OUTPUT_SUPPORT = '1.1.4'
 SEGWIT_SUPPORT = '1.1.9'
@@ -231,7 +231,7 @@ class Ledger_Client(HardwareClientBase):
                 self.perform_hw1_preflight()
             except BTChipException as e:
                 if (e.sw == 0x6d00 or e.sw == 0x6700):
-                    raise UserFacingException(_("Device not in Litecoin mode")) from e
+                    raise UserFacingException(_("Device not in Beyondcoin mode")) from e
                 raise e
             self.preflightDone = True
 

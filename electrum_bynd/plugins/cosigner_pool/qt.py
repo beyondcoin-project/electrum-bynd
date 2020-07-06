@@ -32,21 +32,21 @@ from PyQt5.QtCore import QObject, pyqtSignal
 from PyQt5.QtWidgets import QPushButton
 import certifi
 
-from electrum_ltc import util, keystore, ecc, crypto
-from electrum_ltc import transaction
-from electrum_ltc.transaction import Transaction, PartialTransaction, tx_from_any
-from electrum_ltc.bip32 import BIP32Node
-from electrum_ltc.plugin import BasePlugin, hook
-from electrum_ltc.i18n import _
-from electrum_ltc.wallet import Multisig_Wallet
-from electrum_ltc.util import bh2u, bfh
+from electrum_bynd import util, keystore, ecc, crypto
+from electrum_bynd import transaction
+from electrum_bynd.transaction import Transaction, PartialTransaction, tx_from_any
+from electrum_bynd.bip32 import BIP32Node
+from electrum_bynd.plugin import BasePlugin, hook
+from electrum_bynd.i18n import _
+from electrum_bynd.wallet import Multisig_Wallet
+from electrum_bynd.util import bh2u, bfh
 
-from electrum_ltc.gui.qt.transaction_dialog import show_transaction, TxDialog
-from electrum_ltc.gui.qt.util import WaitingDialog
+from electrum_bynd.gui.qt.transaction_dialog import show_transaction, TxDialog
+from electrum_bynd.gui.qt.util import WaitingDialog
 
 if TYPE_CHECKING:
-    from electrum_ltc.gui.qt import ElectrumGui
-    from electrum_ltc.gui.qt.main_window import ElectrumWindow
+    from electrum_bynd.gui.qt import ElectrumGui
+    from electrum_bynd.gui.qt.main_window import ElectrumWindow
 
 
 ca_path = certifi.where()

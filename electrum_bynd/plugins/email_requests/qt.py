@@ -42,16 +42,16 @@ from PyQt5.QtCore import QObject, pyqtSignal, QThread
 from PyQt5.QtWidgets import (QVBoxLayout, QLabel, QGridLayout, QLineEdit,
                              QInputDialog)
 
-from electrum_ltc.gui.qt.util import (EnterButton, Buttons, CloseButton, OkButton,
+from electrum_bynd.gui.qt.util import (EnterButton, Buttons, CloseButton, OkButton,
                                       WindowModalDialog, get_parent_main_window)
-from electrum_ltc.gui.qt.main_window import ElectrumWindow
+from electrum_bynd.gui.qt.main_window import ElectrumWindow
 
-from electrum_ltc.plugin import BasePlugin, hook
-from electrum_ltc.paymentrequest import PaymentRequest
-from electrum_ltc.i18n import _
-from electrum_ltc.logging import Logger
-from electrum_ltc.wallet import Abstract_Wallet
-from electrum_ltc.invoices import OnchainInvoice
+from electrum_bynd.plugin import BasePlugin, hook
+from electrum_bynd.paymentrequest import PaymentRequest
+from electrum_bynd.i18n import _
+from electrum_bynd.logging import Logger
+from electrum_bynd.wallet import Abstract_Wallet
+from electrum_bynd.invoices import OnchainInvoice
 
 
 class Processor(threading.Thread, Logger):
@@ -85,7 +85,7 @@ class Processor(threading.Thread, Logger):
                 p = [p]
                 continue
             for item in p:
-                if item.get_content_type() == "application/litecoin-paymentrequest":
+                if item.get_content_type() == "application/beyondcoin-paymentrequest":
                     pr_str = item.get_payload()
                     pr_str = base64.b64decode(pr_str)
                     self.on_receive(pr_str)
@@ -115,10 +115,10 @@ class Processor(threading.Thread, Logger):
         msg['Subject'] = message
         msg['To'] = recipient
         msg['From'] = self.username
-        part = MIMEBase('application', "litecoin-paymentrequest")
+        part = MIMEBase('application', "beyondcoin-paymentrequest")
         part.set_payload(payment_request)
         encode_base64(part)
-        part.add_header('Content-Disposition', 'attachment; filename="payreq.ltc"')
+        part.add_header('Content-Disposition', 'attachment; filename="payreq.bynd"')
         msg.attach(part)
         try:
             s = smtplib.SMTP_SSL(self.imap_server, timeout=2)
@@ -181,7 +181,7 @@ class Plugin(BasePlugin):
         menu.addAction(_("Send via e-mail"), lambda: self.send(window, addr))
 
     def send(self, window: ElectrumWindow, addr):
-        from electrum_ltc import paymentrequest
+        from electrum_bynd import paymentrequest
         req = window.wallet.receive_requests.get(addr)
         if not isinstance(req, OnchainInvoice):
             window.show_error("Only on-chain requests are supported.")

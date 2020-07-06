@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import (
     QFileDialog,
 )
 
-from electrum_ltc.i18n import _
+from electrum_bynd.i18n import _
 
 from .util import WindowModalDialog, get_parent_main_window, WWLabel
 

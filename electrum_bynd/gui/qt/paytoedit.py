@@ -29,12 +29,12 @@ from typing import NamedTuple, Sequence, Optional, List, TYPE_CHECKING
 
 from PyQt5.QtGui import QFontMetrics, QFont
 
-from electrum_ltc import bitcoin
-from electrum_ltc.util import bfh, maybe_extract_bolt11_invoice
-from electrum_ltc.transaction import push_script, PartialTxOutput
-from electrum_ltc.bitcoin import opcodes
-from electrum_ltc.logging import Logger
-from electrum_ltc.lnaddr import LnDecodeException
+from electrum_bynd import bitcoin
+from electrum_bynd.util import bfh, maybe_extract_bolt11_invoice
+from electrum_bynd.transaction import push_script, PartialTxOutput
+from electrum_bynd.bitcoin import opcodes
+from electrum_bynd.logging import Logger
+from electrum_bynd.lnaddr import LnDecodeException
 
 from .qrtextedit import ScanQRTextEdit
 from .completion_text_edit import CompletionTextEdit
@@ -143,7 +143,7 @@ class PayToEdit(CompletionTextEdit, ScanQRTextEdit, Logger):
         self.lightning_invoice = None
         if len(lines) == 1:
             data = lines[0]
-            if data.startswith("litecoin:"):
+            if data.startswith("beyondcoin:"):
                 self.win.pay_to_URI(data)
                 return
             bolt11_invoice = maybe_extract_bolt11_invoice(data)
@@ -226,7 +226,7 @@ class PayToEdit(CompletionTextEdit, ScanQRTextEdit, Logger):
 
     def qr_input(self):
         data = super(PayToEdit,self).qr_input()
-        if data.startswith("litecoin:"):
+        if data.startswith("beyondcoin:"):
             self.win.pay_to_URI(data)
             # TODO: update fee
 

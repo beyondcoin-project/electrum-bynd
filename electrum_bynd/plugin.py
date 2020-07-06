@@ -73,7 +73,7 @@ class Plugins(DaemonThread):
 
     def load_plugins(self):
         for loader, name, ispkg in pkgutil.iter_modules([self.pkgpath]):
-            full_name = f'electrum_ltc.plugins.{name}'
+            full_name = f'electrum_bynd.plugins.{name}'
             spec = importlib.util.find_spec(full_name)
             if spec is None:  # pkgutil found it but importlib can't ?!
                 raise Exception(f"Error pre-loading {full_name}: no spec")
@@ -111,7 +111,7 @@ class Plugins(DaemonThread):
     def load_plugin(self, name) -> 'BasePlugin':
         if name in self.plugins:
             return self.plugins[name]
-        full_name = f'electrum_ltc.plugins.{name}.{self.gui_name}'
+        full_name = f'electrum_bynd.plugins.{name}.{self.gui_name}'
         spec = importlib.util.find_spec(full_name)
         if spec is None:
             raise RuntimeError("%s implementation for %s plugin not found"
@@ -555,9 +555,9 @@ class DeviceMgr(ThreadJob):
         # or it is not pairable
         raise DeviceUnpairableError(
             _('Electrum cannot pair with your {}.\n\n'
-              'Before you request litecoins to be sent to addresses in this '
+              'Before you request beyondcoins to be sent to addresses in this '
               'wallet, ensure you can pair with your device, or that you have '
-              'its seed (and passphrase, if any).  Otherwise all litecoins you '
+              'its seed (and passphrase, if any).  Otherwise all beyondcoins you '
               'receive will be unspendable.').format(plugin.device))
 
     def unpaired_device_infos(self, handler: Optional['HardwareHandlerBase'], plugin: 'HW_PluginBase',

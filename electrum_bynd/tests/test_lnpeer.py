@@ -12,25 +12,25 @@ from typing import Iterable, NamedTuple
 
 from aiorpcx import TaskGroup
 
-from electrum_ltc import constants
-from electrum_ltc.network import Network
-from electrum_ltc.ecc import ECPrivkey
-from electrum_ltc import simple_config, lnutil
-from electrum_ltc.lnaddr import lnencode, LnAddr, lndecode
-from electrum_ltc.bitcoin import COIN, sha256
-from electrum_ltc.util import bh2u, create_and_start_event_loop, NetworkRetryManager
-from electrum_ltc.lnpeer import Peer
-from electrum_ltc.lnutil import LNPeerAddr, Keypair, privkey_to_pubkey
-from electrum_ltc.lnutil import LightningPeerConnectionClosed, RemoteMisbehaving
-from electrum_ltc.lnutil import PaymentFailure, LnFeatures, HTLCOwner
-from electrum_ltc.lnchannel import ChannelState, PeerState, Channel
-from electrum_ltc.lnrouter import LNPathFinder, PathEdge, LNPathInconsistent
-from electrum_ltc.channel_db import ChannelDB
-from electrum_ltc.lnworker import LNWallet, NoPathFound
-from electrum_ltc.lnmsg import encode_msg, decode_msg
-from electrum_ltc.logging import console_stderr_handler, Logger
-from electrum_ltc.lnworker import PaymentInfo, RECEIVED, PR_UNPAID
-from electrum_ltc.lnonion import OnionFailureCode
+from electrum_bynd import constants
+from electrum_bynd.network import Network
+from electrum_bynd.ecc import ECPrivkey
+from electrum_bynd import simple_config, lnutil
+from electrum_bynd.lnaddr import lnencode, LnAddr, lndecode
+from electrum_bynd.bitcoin import COIN, sha256
+from electrum_bynd.util import bh2u, create_and_start_event_loop, NetworkRetryManager
+from electrum_bynd.lnpeer import Peer
+from electrum_bynd.lnutil import LNPeerAddr, Keypair, privkey_to_pubkey
+from electrum_bynd.lnutil import LightningPeerConnectionClosed, RemoteMisbehaving
+from electrum_bynd.lnutil import PaymentFailure, LnFeatures, HTLCOwner
+from electrum_bynd.lnchannel import ChannelState, PeerState, Channel
+from electrum_bynd.lnrouter import LNPathFinder, PathEdge, LNPathInconsistent
+from electrum_bynd.channel_db import ChannelDB
+from electrum_bynd.lnworker import LNWallet, NoPathFound
+from electrum_bynd.lnmsg import encode_msg, decode_msg
+from electrum_bynd.logging import console_stderr_handler, Logger
+from electrum_bynd.lnworker import PaymentInfo, RECEIVED, PR_UNPAID
+from electrum_bynd.lnonion import OnionFailureCode
 
 from .test_lnchannel import create_test_channels
 from .test_bitcoin import needs_test_with_all_chacha20_implementations

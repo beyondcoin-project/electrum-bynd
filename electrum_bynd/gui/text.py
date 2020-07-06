@@ -8,21 +8,21 @@ import getpass
 import logging
 from typing import TYPE_CHECKING
 
-import electrum_ltc as electrum
-from electrum_ltc import util
-from electrum_ltc.util import format_satoshis
-from electrum_ltc.bitcoin import is_address, COIN
-from electrum_ltc.transaction import PartialTxOutput
-from electrum_ltc.wallet import Wallet
-from electrum_ltc.storage import WalletStorage
-from electrum_ltc.network import NetworkParameters, TxBroadcastError, BestEffortRequestFailed
-from electrum_ltc.interface import ServerAddr
-from electrum_ltc.logging import console_stderr_handler
+import electrum_bynd as electrum
+from electrum_bynd import util
+from electrum_bynd.util import format_satoshis
+from electrum_bynd.bitcoin import is_address, COIN
+from electrum_bynd.transaction import PartialTxOutput
+from electrum_bynd.wallet import Wallet
+from electrum_bynd.storage import WalletStorage
+from electrum_bynd.network import NetworkParameters, TxBroadcastError, BestEffortRequestFailed
+from electrum_bynd.interface import ServerAddr
+from electrum_bynd.logging import console_stderr_handler
 
 if TYPE_CHECKING:
-    from electrum_ltc.daemon import Daemon
-    from electrum_ltc.simple_config import SimpleConfig
-    from electrum_ltc.plugin import Plugins
+    from electrum_bynd.daemon import Daemon
+    from electrum_bynd.simple_config import SimpleConfig
+    from electrum_bynd.plugin import Plugins
 
 
 _ = lambda x:x  # i18n
@@ -36,7 +36,7 @@ class ElectrumGui:
         self.network = daemon.network
         storage = WalletStorage(config.get_wallet_path())
         if not storage.file_exists():
-            print("Wallet not found. try 'electrum-ltc create'")
+            print("Wallet not found. try 'electrum-bynd create'")
             exit()
         if storage.is_encrypted():
             password = getpass.getpass('Password:', stream=None)
@@ -349,7 +349,7 @@ class ElectrumGui:
 
     def do_send(self):
         if not is_address(self.str_recipient):
-            self.show_message(_('Invalid Litecoin address'))
+            self.show_message(_('Invalid Beyondcoin address'))
             return
         try:
             amount = int(Decimal(self.str_amount) * COIN)

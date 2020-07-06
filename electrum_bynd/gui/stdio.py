@@ -3,13 +3,13 @@ import getpass
 import datetime
 import logging
 
-from electrum_ltc import util
-from electrum_ltc import WalletStorage, Wallet
-from electrum_ltc.util import format_satoshis
-from electrum_ltc.bitcoin import is_address, COIN
-from electrum_ltc.transaction import PartialTxOutput
-from electrum_ltc.network import TxBroadcastError, BestEffortRequestFailed
-from electrum_ltc.logging import console_stderr_handler
+from electrum_bynd import util
+from electrum_bynd import WalletStorage, Wallet
+from electrum_bynd.util import format_satoshis
+from electrum_bynd.bitcoin import is_address, COIN
+from electrum_bynd.transaction import PartialTxOutput
+from electrum_bynd.network import TxBroadcastError, BestEffortRequestFailed
+from electrum_bynd.logging import console_stderr_handler
 
 _ = lambda x:x  # i18n
 
@@ -24,7 +24,7 @@ class ElectrumGui:
         self.network = daemon.network
         storage = WalletStorage(config.get_wallet_path())
         if not storage.file_exists:
-            print("Wallet not found. try 'electrum-ltc create'")
+            print("Wallet not found. try 'electrum-bynd create'")
             exit()
         if storage.is_encrypted():
             password = getpass.getpass('Password:', stream=None)
@@ -172,7 +172,7 @@ class ElectrumGui:
 
     def do_send(self):
         if not is_address(self.str_recipient):
-            print(_('Invalid Litecoin address'))
+            print(_('Invalid Beyondcoin address'))
             return
         try:
             amount = int(Decimal(self.str_amount) * COIN)
@@ -223,12 +223,12 @@ class ElectrumGui:
             #self.update_contacts_tab()
 
     def network_dialog(self):
-        print("use 'electrum-ltc setconfig server/proxy' to change your network settings")
+        print("use 'electrum-bynd setconfig server/proxy' to change your network settings")
         return True
 
 
     def settings_dialog(self):
-        print("use 'electrum-ltc setconfig' to change your settings")
+        print("use 'electrum-bynd setconfig' to change your settings")
         return True
 
     def password_dialog(self):

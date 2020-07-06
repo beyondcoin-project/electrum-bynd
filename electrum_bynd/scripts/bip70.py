@@ -4,15 +4,15 @@
 
 import tlslite
 
-from electrum_ltc.transaction import Transaction
-from electrum_ltc import paymentrequest
-from electrum_ltc import paymentrequest_pb2 as pb2
-from electrum_ltc.bitcoin import address_to_script
+from electrum_bynd.transaction import Transaction
+from electrum_bynd import paymentrequest
+from electrum_bynd import paymentrequest_pb2 as pb2
+from electrum_bynd.bitcoin import address_to_script
 
 chain_file = 'mychain.pem'
 cert_file = 'mycert.pem'
 amount = 1000000
-address = "LSh322VzYj7CCSwQJXrP49Lvt2zktLjQbz"
+address = "BKJKT5ZpdxppVa8LDNxCYnfHHNNAA1Xdi1"
 memo = "blah"
 out_file = "payreq"
 

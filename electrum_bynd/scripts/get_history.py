@@ -3,16 +3,16 @@
 import sys
 import asyncio
 
-from electrum_ltc import bitcoin
-from electrum_ltc.network import Network
-from electrum_ltc.util import json_encode, print_msg, create_and_start_event_loop, log_exceptions
-from electrum_ltc.simple_config import SimpleConfig
+from electrum_bynd import bitcoin
+from electrum_bynd.network import Network
+from electrum_bynd.util import json_encode, print_msg, create_and_start_event_loop, log_exceptions
+from electrum_bynd.simple_config import SimpleConfig
 
 
 try:
     addr = sys.argv[1]
 except Exception:
-    print("usage: get_history <litecoin_address>")
+    print("usage: get_history <beyondcoin_address>")
     sys.exit(1)
 
 config = SimpleConfig()

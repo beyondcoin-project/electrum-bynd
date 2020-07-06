@@ -2,10 +2,10 @@ from typing import TYPE_CHECKING, Optional
 
 from PyQt5.QtWidgets import QLabel, QVBoxLayout, QGridLayout, QPushButton
 
-from electrum_ltc.i18n import _
-from electrum_ltc.util import NotEnoughFunds, NoDynamicFeeEstimates
-from electrum_ltc.lnutil import ln_dummy_address
-from electrum_ltc.transaction import PartialTxOutput, PartialTransaction
+from electrum_bynd.i18n import _
+from electrum_bynd.util import NotEnoughFunds, NoDynamicFeeEstimates
+from electrum_bynd.lnutil import ln_dummy_address
+from electrum_bynd.transaction import PartialTxOutput, PartialTransaction
 
 from .util import (WindowModalDialog, Buttons, OkButton, CancelButton,
                    EnterButton, ColorScheme, WWLabel, read_QIcon)

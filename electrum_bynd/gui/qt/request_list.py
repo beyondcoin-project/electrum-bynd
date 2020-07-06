@@ -30,10 +30,10 @@ from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QMenu, QAbstractItemView
 from PyQt5.QtCore import Qt, QItemSelectionModel, QModelIndex
 
-from electrum_ltc.i18n import _
-from electrum_ltc.util import format_time
-from electrum_ltc.invoices import PR_TYPE_ONCHAIN, PR_TYPE_LN, LNInvoice, OnchainInvoice
-from electrum_ltc.plugin import run_hook
+from electrum_bynd.i18n import _
+from electrum_bynd.util import format_time
+from electrum_bynd.invoices import PR_TYPE_ONCHAIN, PR_TYPE_LN, LNInvoice, OnchainInvoice
+from electrum_bynd.plugin import run_hook
 
 from .util import MyTreeView, pr_icons, read_QIcon, webopen, MySortModel
 
@@ -201,8 +201,8 @@ class RequestList(MyTreeView):
             menu.addAction(_("Copy Request"), lambda: self.parent.do_copy(req.invoice, title='Lightning Request'))
         else:
             URI = self.wallet.get_request_URI(req)
-            menu.addAction(_("Copy Request"), lambda: self.parent.do_copy(URI, title='Litecoin URI'))
-            menu.addAction(_("Copy Address"), lambda: self.parent.do_copy(req.get_address(), title='Litecoin Address'))
+            menu.addAction(_("Copy Request"), lambda: self.parent.do_copy(URI, title='Beyondcoin URI'))
+            menu.addAction(_("Copy Address"), lambda: self.parent.do_copy(req.get_address(), title='Beyondcoin Address'))
         #if 'view_url' in req:
         #    menu.addAction(_("View in web browser"), lambda: webopen(req['view_url']))
         menu.addAction(_("Delete"), lambda: self.parent.delete_requests([key]))

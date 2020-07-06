@@ -39,12 +39,12 @@ from PyQt5.QtWidgets import (QMenu, QHeaderView, QLabel, QMessageBox,
                              QPushButton, QComboBox, QVBoxLayout, QCalendarWidget,
                              QGridLayout)
 
-from electrum_ltc.address_synchronizer import TX_HEIGHT_LOCAL, TX_HEIGHT_FUTURE
-from electrum_ltc.i18n import _
-from electrum_ltc.util import (block_explorer_URL, profiler, TxMinedInfo,
+from electrum_bynd.address_synchronizer import TX_HEIGHT_LOCAL, TX_HEIGHT_FUTURE
+from electrum_bynd.i18n import _
+from electrum_bynd.util import (block_explorer_URL, profiler, TxMinedInfo,
                                OrderedDictWithIndex, timestamp_to_datetime,
                                Satoshis, Fiat, format_time)
-from electrum_ltc.logging import get_logger, Logger
+from electrum_bynd.logging import get_logger, Logger
 
 from .custom_model import CustomNode, CustomModel
 from .util import (read_QIcon, MONOSPACE_FONT, Buttons, CancelButton, OkButton,
@@ -52,7 +52,7 @@ from .util import (read_QIcon, MONOSPACE_FONT, Buttons, CancelButton, OkButton,
                    CloseButton, webopen)
 
 if TYPE_CHECKING:
-    from electrum_ltc.wallet import Abstract_Wallet
+    from electrum_bynd.wallet import Abstract_Wallet
     from .main_window import ElectrumWindow
 
 
@@ -60,9 +60,9 @@ _logger = get_logger(__name__)
 
 
 try:
-    from electrum_ltc.plot import plot_history, NothingToPlotException
+    from electrum_bynd.plot import plot_history, NothingToPlotException
 except:
-    _logger.info("could not import electrum_ltc.plot. This feature needs matplotlib to be installed.")
+    _logger.info("could not import electrum_bynd.plot. This feature needs matplotlib to be installed.")
     plot_history = None
 
 # note: this list needs to be kept in sync with another in kivy
@@ -559,13 +559,13 @@ class HistoryList(MyTreeView, AcceptFileDragDrop):
         grid = QGridLayout()
         grid.addWidget(QLabel(_("Start")), 0, 0)
         grid.addWidget(QLabel(self.format_date(start_date)), 0, 1)
-        grid.addWidget(QLabel(str(h.get('fiat_start_value')) + '/LTC'), 0, 2)
+        grid.addWidget(QLabel(str(h.get('fiat_start_value')) + '/BYND'), 0, 2)
         grid.addWidget(QLabel(_("Initial balance")), 1, 0)
         grid.addWidget(QLabel(format_amount(h['start_balance'])), 1, 1)
         grid.addWidget(QLabel(str(h.get('fiat_start_balance'))), 1, 2)
         grid.addWidget(QLabel(_("End")), 2, 0)
         grid.addWidget(QLabel(self.format_date(end_date)), 2, 1)
-        grid.addWidget(QLabel(str(h.get('fiat_end_value')) + '/LTC'), 2, 2)
+        grid.addWidget(QLabel(str(h.get('fiat_end_value')) + '/BYND'), 2, 2)
         grid.addWidget(QLabel(_("Final balance")), 4, 0)
         grid.addWidget(QLabel(format_amount(h['end_balance'])), 4, 1)
         grid.addWidget(QLabel(str(h.get('fiat_end_balance'))), 4, 2)
@@ -737,7 +737,7 @@ class HistoryList(MyTreeView, AcceptFileDragDrop):
         d = WindowModalDialog(self, _('Export History'))
         d.setMinimumSize(400, 200)
         vbox = QVBoxLayout(d)
-        defaultname = os.path.expanduser('~/electrum-ltc-history.csv')
+        defaultname = os.path.expanduser('~/electrum-bynd-history.csv')
         select_msg = _('Select file to export your wallet transactions to')
         hbox, filename_e, csv_button = filename_field(self, self.config, defaultname, select_msg)
         vbox.addLayout(hbox)
@@ -788,7 +788,7 @@ class HistoryList(MyTreeView, AcceptFileDragDrop):
                 for line in lines:
                     transaction.writerow(line)
             else:
-                from electrum_ltc.util import json_encode
+                from electrum_bynd.util import json_encode
                 f.write(json_encode(txns))
 
     def get_text_and_userrole_from_coordinate(self, row, col):

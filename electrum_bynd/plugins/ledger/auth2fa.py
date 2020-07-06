@@ -5,11 +5,11 @@ from PyQt5.QtWidgets import (QDialog, QLineEdit, QTextEdit, QVBoxLayout, QLabel,
 
 from btchip.btchip import BTChipException
 
-from electrum_ltc.gui.qt.util import PasswordLineEdit
+from electrum_bynd.gui.qt.util import PasswordLineEdit
 
-from electrum_ltc.i18n import _
-from electrum_ltc import constants, bitcoin
-from electrum_ltc.logging import get_logger
+from electrum_bynd.i18n import _
+from electrum_bynd import constants, bitcoin
+from electrum_bynd.logging import get_logger
 
 
 _logger = get_logger(__name__)

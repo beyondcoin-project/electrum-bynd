@@ -7,10 +7,10 @@ from kivy.factory import Factory
 from kivy.uix.popup import Popup
 from kivy.clock import Clock
 
-from electrum_ltc.util import bh2u
-from electrum_ltc.lnutil import LOCAL, REMOTE, format_short_channel_id
-from electrum_ltc.lnchannel import AbstractChannel, Channel
-from electrum_ltc.gui.kivy.i18n import _
+from electrum_bynd.util import bh2u
+from electrum_bynd.lnutil import LOCAL, REMOTE, format_short_channel_id
+from electrum_bynd.lnchannel import AbstractChannel, Channel
+from electrum_bynd.gui.kivy.i18n import _
 from .question import Question
 
 if TYPE_CHECKING:

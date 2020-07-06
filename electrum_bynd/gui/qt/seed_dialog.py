@@ -28,9 +28,9 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import (QVBoxLayout, QCheckBox, QHBoxLayout, QLineEdit,
                              QLabel, QCompleter, QDialog, QStyledItemDelegate)
 
-from electrum_ltc.i18n import _
-from electrum_ltc.mnemonic import Mnemonic, seed_type
-from electrum_ltc import old_mnemonic
+from electrum_bynd.i18n import _
+from electrum_bynd.mnemonic import Mnemonic, seed_type
+from electrum_bynd import old_mnemonic
 
 from .util import (Buttons, OkButton, WWLabel, ButtonsTextEdit, icon_path,
                    EnterButton, CloseButton, WindowModalDialog, ColorScheme)
@@ -182,7 +182,7 @@ class SeedLayout(QVBoxLayout):
             t = seed_type(s)
             label = _('Seed Type') + ': ' + t if t else ''
         else:
-            from electrum_ltc.keystore import bip39_is_checksum_valid
+            from electrum_bynd.keystore import bip39_is_checksum_valid
             is_checksum, is_wordlist = bip39_is_checksum_valid(s)
             status = ('checksum: ' + ('ok' if is_checksum else 'failed')) if is_wordlist else 'unknown wordlist'
             label = 'BIP39' + ' (%s)'%status
@@ -226,7 +226,7 @@ class KeysLayout(QVBoxLayout):
 class SeedDialog(WindowModalDialog):
 
     def __init__(self, parent, seed, passphrase):
-        WindowModalDialog.__init__(self, parent, ('Electrum-LTC - ' + _('Seed')))
+        WindowModalDialog.__init__(self, parent, ('Electrum-BYND - ' + _('Seed')))
         self.setMinimumWidth(400)
         vbox = QVBoxLayout(self)
         title =  _("Your wallet generation seed is:")

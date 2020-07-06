@@ -10,26 +10,26 @@ from PyQt5.QtCore import Qt, QThread, pyqtSignal
 from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QLabel, QProgressBar,
                              QHBoxLayout, QPushButton, QDialog)
 
-from electrum_ltc import version
-from electrum_ltc import constants
-from electrum_ltc import ecc
-from electrum_ltc.i18n import _
-from electrum_ltc.util import make_aiohttp_session
-from electrum_ltc.logging import Logger
-from electrum_ltc.network import Network
+from electrum_bynd import version
+from electrum_bynd import constants
+from electrum_bynd import ecc
+from electrum_bynd.i18n import _
+from electrum_bynd.util import make_aiohttp_session
+from electrum_bynd.logging import Logger
+from electrum_bynd.network import Network
 
 
 class UpdateCheck(QDialog, Logger):
-    url = "https://electrum-ltc.org/version"
-    download_url = "https://electrum-ltc.org/#download"
+    url = "https://electrum-bynd.com/version"
+    download_url = "https://electrum-bynd.com/#download"
 
     VERSION_ANNOUNCEMENT_SIGNING_KEYS = (
-        "LWZzbv5SbiRRjBDL6dUYRdBX9Dp89RDZgG",
+        "BKJKT5ZpdxppVa8LDNxCYnfHHNNAA1Xdi1",
     )
 
     def __init__(self, *, latest_version=None):
         QDialog.__init__(self)
-        self.setWindowTitle('Electrum-LTC - ' + _('Update Check'))
+        self.setWindowTitle('Electrum-BYND - ' + _('Update Check'))
         self.content = QVBoxLayout()
         self.content.setContentsMargins(*[10]*4)
 

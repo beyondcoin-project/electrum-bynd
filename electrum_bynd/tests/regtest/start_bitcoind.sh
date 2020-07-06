@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 export HOME=~
 set -eux pipefail
-mkdir -p ~/.litecoin
-cat > ~/.litecoin/litecoin.conf <<EOF
+mkdir -p ~/.beyondcoin
+cat > ~/.beyondcoin/beyondcoin.conf <<EOF
 regtest=1
 txindex=1
 printtoconsole=1
@@ -16,9 +16,9 @@ fallbackfee=0.0002
 rpcbind=0.0.0.0
 rpcport=18554
 EOF
-rm -rf ~/.litecoin/regtest
-screen -S litecoind -X quit || true
-screen -S litecoind -m -d litecoind -regtest
+rm -rf ~/.beyondcoin/regtest
+screen -S beyondcoind -X quit || true
+screen -S beyondcoind -m -d beyondcoind -regtest
 sleep 6
-addr=$(litecoin-cli getnewaddress)
-litecoin-cli generatetoaddress 150 $addr > /dev/null
+addr=$(beyondcoin-cli getnewaddress)
+beyondcoin-cli generatetoaddress 150 $addr > /dev/null

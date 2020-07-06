@@ -16,20 +16,20 @@ import sys
 import time
 import copy
 
-from electrum_ltc.crypto import sha256d, EncodeAES_base64, EncodeAES_bytes, DecodeAES_bytes, hmac_oneshot
-from electrum_ltc.bitcoin import public_key_to_p2pkh
-from electrum_ltc.bip32 import BIP32Node, convert_bip32_intpath_to_strpath, is_all_public_derivation
-from electrum_ltc import ecc
-from electrum_ltc.ecc import msg_magic
-from electrum_ltc.wallet import Standard_Wallet
-from electrum_ltc import constants
-from electrum_ltc.transaction import Transaction, PartialTransaction, PartialTxInput
-from electrum_ltc.i18n import _
-from electrum_ltc.keystore import Hardware_KeyStore
-from electrum_ltc.util import to_string, UserCancelled, UserFacingException, bfh
-from electrum_ltc.base_wizard import ScriptTypeNotSupported, HWD_SETUP_NEW_WALLET
-from electrum_ltc.network import Network
-from electrum_ltc.logging import get_logger
+from electrum_bynd.crypto import sha256d, EncodeAES_base64, EncodeAES_bytes, DecodeAES_bytes, hmac_oneshot
+from electrum_bynd.bitcoin import public_key_to_p2pkh
+from electrum_bynd.bip32 import BIP32Node, convert_bip32_intpath_to_strpath, is_all_public_derivation
+from electrum_bynd import ecc
+from electrum_bynd.ecc import msg_magic
+from electrum_bynd.wallet import Standard_Wallet
+from electrum_bynd import constants
+from electrum_bynd.transaction import Transaction, PartialTransaction, PartialTxInput
+from electrum_bynd.i18n import _
+from electrum_bynd.keystore import Hardware_KeyStore
+from electrum_bynd.util import to_string, UserCancelled, UserFacingException, bfh
+from electrum_bynd.base_wizard import ScriptTypeNotSupported, HWD_SETUP_NEW_WALLET
+from electrum_bynd.network import Network
+from electrum_bynd.logging import get_logger
 
 from ..hw_wallet import HW_PluginBase, HardwareClientBase
 
@@ -308,7 +308,7 @@ class DigitalBitbox_Client(HardwareClientBase):
 
     def dbb_generate_wallet(self):
         key = self.stretch_key(self.password)
-        filename = ("Electrum-LTC-" + time.strftime("%Y-%m-%d-%H-%M-%S") + ".pdf")
+        filename = ("Electrum-BYND-" + time.strftime("%Y-%m-%d-%H-%M-%S") + ".pdf")
         msg = ('{"seed":{"source": "create", "key": "%s", "filename": "%s", "entropy": "%s"}}' % (key, filename, to_hexstr(os.urandom(32)))).encode('utf8')
         reply = self.hid_send_encrypt(msg)
         if 'error' in reply:

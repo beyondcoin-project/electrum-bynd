@@ -17,8 +17,8 @@ from kivy.core.window import Window
 from kivy.clock import Clock
 from kivy.utils import platform
 
-from electrum_ltc.base_wizard import BaseWizard
-from electrum_ltc.util import is_valid_email
+from electrum_bynd.base_wizard import BaseWizard
+from electrum_bynd.util import is_valid_email
 
 
 from . import EventsDialog
@@ -26,14 +26,14 @@ from ...i18n import _
 from .password_dialog import PasswordDialog
 
 if TYPE_CHECKING:
-    from electrum_ltc.gui.kivy.main_window import ElectrumWindow
+    from electrum_bynd.gui.kivy.main_window import ElectrumWindow
 
 
 # global Variables
 
 Builder.load_string('''
 #:import Window kivy.core.window.Window
-#:import _ electrum_ltc.gui.kivy.i18n._
+#:import _ electrum_bynd.gui.kivy.i18n._
 
 
 <WizardTextInput@TextInput>
@@ -43,8 +43,8 @@ Builder.load_string('''
     background_color: (1, 1, 1, 1) if self.focus else (0.454, 0.698, 0.909, 1)
     foreground_color: (0.31, 0.31, 0.31, 1) if self.focus else (0.835, 0.909, 0.972, 1)
     hint_text_color: self.foreground_color
-    background_active: 'atlas://electrum_ltc/gui/kivy/theming/light/create_act_text_active'
-    background_normal: 'atlas://electrum_ltc/gui/kivy/theming/light/create_act_text_active'
+    background_active: 'atlas://electrum_bynd/gui/kivy/theming/light/create_act_text_active'
+    background_normal: 'atlas://electrum_bynd/gui/kivy/theming/light/create_act_text_active'
     size_hint_y: None
     height: '48sp'
 
@@ -93,7 +93,7 @@ Builder.load_string('''
                 size_hint: 1, None
                 height: self.texture_size[1] if self.opacity else 0
                 font_size: '33sp'
-                font_name: 'electrum_ltc/gui/kivy/data/fonts/tron/Tr2n.ttf'
+                font_name: 'electrum_bynd/gui/kivy/data/fonts/tron/Tr2n.ttf'
         GridLayout:
             cols: 1
             id: crcontent
@@ -314,7 +314,7 @@ Builder.load_string('''
     font_size: '18dp'
     text_size: self.width - dp(24), self.height - dp(12)
     color: .1, .1, .1, 1
-    background_normal: 'atlas://electrum_ltc/gui/kivy/theming/light/white_bg_round_top'
+    background_normal: 'atlas://electrum_bynd/gui/kivy/theming/light/white_bg_round_top'
     background_down: self.background_normal
     size_hint_y: None
 
@@ -343,7 +343,7 @@ Builder.load_string('''
         height: '30dp'
         width: '30dp'
         size_hint: 1, None
-        icon: 'atlas://electrum_ltc/gui/kivy/theming/light/gear'
+        icon: 'atlas://electrum_bynd/gui/kivy/theming/light/gear'
         on_release:
             root.options_dialog() if root.options_dialog else None
 
@@ -479,7 +479,7 @@ Builder.load_string('''
             id: scan
             height: '48sp'
             on_release: root.scan_xpub()
-            icon: 'atlas://electrum_ltc/gui/kivy/theming/light/camera'
+            icon: 'atlas://electrum_bynd/gui/kivy/theming/light/camera'
             size_hint: 1, None
         WizardButton:
             text: _('Paste')
@@ -871,8 +871,8 @@ class RestoreSeedDialog(WizardDialog):
     def __init__(self, wizard, **kwargs):
         super(RestoreSeedDialog, self).__init__(wizard, **kwargs)
         self._test = kwargs['test']
-        from electrum_ltc.mnemonic import Mnemonic
-        from electrum_ltc.old_mnemonic import wordlist as old_wordlist
+        from electrum_bynd.mnemonic import Mnemonic
+        from electrum_bynd.old_mnemonic import wordlist as old_wordlist
         self.words = set(Mnemonic('en').wordlist).union(set(old_wordlist))
         self.ids.text_input_seed.text = ''
         self.message = _('Please type your seed phrase using the virtual keyboard.')
@@ -1094,7 +1094,7 @@ class InstallWizard(BaseWizard, Widget):
 
         app = App.get_running_app()
         app.show_info_bubble(
-            text=msg, icon='atlas://electrum_ltc/gui/kivy/theming/light/important',
+            text=msg, icon='atlas://electrum_bynd/gui/kivy/theming/light/important',
             pos=Window.center, width='200sp', arrow_pos=None, modal=True)
         t = threading.Thread(target = target)
         t.start()

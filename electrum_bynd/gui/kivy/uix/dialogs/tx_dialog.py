@@ -12,12 +12,12 @@ from kivy.uix.dropdown import DropDown
 from kivy.uix.button import Button
 
 from .question import Question
-from electrum_ltc.gui.kivy.i18n import _
+from electrum_bynd.gui.kivy.i18n import _
 
-from electrum_ltc.util import InvalidPassword
-from electrum_ltc.address_synchronizer import TX_HEIGHT_LOCAL
-from electrum_ltc.wallet import CannotBumpFee
-from electrum_ltc.transaction import Transaction, PartialTransaction
+from electrum_bynd.util import InvalidPassword
+from electrum_bynd.address_synchronizer import TX_HEIGHT_LOCAL
+from electrum_bynd.wallet import CannotBumpFee
+from electrum_bynd.transaction import Transaction, PartialTransaction
 from ...util import address_colors
 
 if TYPE_CHECKING:
@@ -102,7 +102,7 @@ Builder.load_string('''
             IconButton:
                 size_hint: 0.5, None
                 height: '48dp'
-                icon: 'atlas://electrum_ltc/gui/kivy/theming/light/qrcode'
+                icon: 'atlas://electrum_bynd/gui/kivy/theming/light/qrcode'
                 on_release: root.show_qr()
             Button:
                 size_hint: 0.5, None
@@ -271,7 +271,7 @@ class TxDialog(Factory.Popup):
         self.app.broadcast(self.tx)
 
     def show_qr(self):
-        from electrum_ltc.bitcoin import base_encode, bfh
+        from electrum_bynd.bitcoin import base_encode, bfh
         original_raw_tx = str(self.tx)
         tx = copy.deepcopy(self.tx)  # make copy as we mutate tx
         if isinstance(tx, PartialTransaction):

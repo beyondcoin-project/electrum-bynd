@@ -393,7 +393,7 @@ class Abstract_Wallet(AddressSynchronizer, ABC):
             addr = str(addrs[0])
             if not bitcoin.is_address(addr):
                 neutered_addr = addr[:5] + '..' + addr[-2:]
-                raise WalletFileException(f'The addresses in this wallet are not litecoin addresses.\n'
+                raise WalletFileException(f'The addresses in this wallet are not beyondcoin addresses.\n'
                                           f'e.g. {neutered_addr} (length: {len(addr)})')
 
     def check_returned_address_for_corruption(func):
@@ -524,7 +524,7 @@ class Abstract_Wallet(AddressSynchronizer, ABC):
         if self.is_watching_only():
             raise Exception(_("This is a watching-only wallet"))
         if not is_address(address):
-            raise Exception(f"Invalid Litecoin address: {address}")
+            raise Exception(f"Invalid Beyondcoin address: {address}")
         if not self.is_mine(address):
             raise Exception(_('Address not in wallet.') + f' {address}')
         index = self.get_address_index(address)
@@ -1702,7 +1702,7 @@ class Abstract_Wallet(AddressSynchronizer, ABC):
         is_lightning = x.is_lightning()
         d = {
             'is_lightning': is_lightning,
-            'amount_LTC': format_satoshis(x.get_amount_sat()),
+            'amount_BYND': format_satoshis(x.get_amount_sat()),
             'message': x.message,
             'timestamp': x.time,
             'expiration': x.exp,
@@ -1745,7 +1745,7 @@ class Abstract_Wallet(AddressSynchronizer, ABC):
         is_lightning = x.is_lightning()
         d = {
             'is_lightning': is_lightning,
-            'amount_LTC': format_satoshis(x.get_amount_sat()),
+            'amount_BYND': format_satoshis(x.get_amount_sat()),
             'message': x.message,
             'timestamp': x.time,
             'expiration': x.exp,
@@ -1812,7 +1812,7 @@ class Abstract_Wallet(AddressSynchronizer, ABC):
             assert isinstance(req, OnchainInvoice)
             addr = req.get_address()
             if not bitcoin.is_address(addr):
-                raise Exception(_('Invalid Litecoin address.'))
+                raise Exception(_('Invalid Beyondcoin address.'))
             if not self.is_mine(addr):
                 raise Exception(_('Address not in wallet.'))
             key = addr
@@ -1959,7 +1959,7 @@ class Abstract_Wallet(AddressSynchronizer, ABC):
         return None
 
     def price_at_timestamp(self, txid, price_func):
-        """Returns fiat price of Litecoin at the time tx got confirmed."""
+        """Returns fiat price of Beyondcoin at the time tx got confirmed."""
         timestamp = self.get_tx_height(txid).timestamp
         return price_func(timestamp if timestamp else time.time())
 

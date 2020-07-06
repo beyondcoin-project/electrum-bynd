@@ -3,14 +3,14 @@ import tempfile
 import shutil
 import asyncio
 
-from electrum_ltc.util import bh2u, bfh, create_and_start_event_loop
-from electrum_ltc.lnonion import (OnionHopsDataSingle, new_onion_packet,
+from electrum_bynd.util import bh2u, bfh, create_and_start_event_loop
+from electrum_bynd.lnonion import (OnionHopsDataSingle, new_onion_packet,
                               process_onion_packet, _decode_onion_error, decode_onion_error,
                               OnionFailureCode, OnionPacket)
-from electrum_ltc import bitcoin, lnrouter
-from electrum_ltc.constants import BitcoinTestnet
-from electrum_ltc.simple_config import SimpleConfig
-from electrum_ltc.lnrouter import PathEdge
+from electrum_bynd import bitcoin, lnrouter
+from electrum_bynd.constants import BitcoinTestnet
+from electrum_bynd.simple_config import SimpleConfig
+from electrum_bynd.lnrouter import PathEdge
 
 from . import TestCaseForTestnet
 from .test_bitcoin import needs_test_with_all_chacha20_implementations

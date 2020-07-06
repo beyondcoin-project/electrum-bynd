@@ -4,9 +4,9 @@ import asyncio
 from statistics import median
 from numbers import Number
 
-from electrum_ltc.network import filter_protocol, Network
-from electrum_ltc.util import create_and_start_event_loop, log_exceptions
-from electrum_ltc.simple_config import SimpleConfig
+from electrum_bynd.network import filter_protocol, Network
+from electrum_bynd.util import create_and_start_event_loop, log_exceptions
+from electrum_bynd.simple_config import SimpleConfig
 
 
 config = SimpleConfig()

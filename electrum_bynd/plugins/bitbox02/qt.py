@@ -10,13 +10,13 @@ from PyQt5.QtWidgets import (
 
 from PyQt5.QtCore import Qt, QMetaObject, Q_RETURN_ARG, pyqtSlot
 
-from electrum_ltc.gui.qt.util import (
+from electrum_bynd.gui.qt.util import (
     WindowModalDialog,
     OkButton,
 )
 
-from electrum_ltc.i18n import _
-from electrum_ltc.plugin import hook
+from electrum_bynd.i18n import _
+from electrum_bynd.plugin import hook
 
 from .bitbox02 import BitBox02Plugin
 from ..hw_wallet.qt import QtHandlerBase, QtPluginBase

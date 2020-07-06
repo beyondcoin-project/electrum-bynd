@@ -30,7 +30,7 @@ import datetime
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QVBoxLayout, QLabel, QGridLayout
 
-from electrum_ltc.i18n import _
+from electrum_bynd.i18n import _
 from .util import WindowModalDialog, ButtonsLineEdit, ColorScheme, Buttons, CloseButton, MONOSPACE_FONT
 
 if TYPE_CHECKING:

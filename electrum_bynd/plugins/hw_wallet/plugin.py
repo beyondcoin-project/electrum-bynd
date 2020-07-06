@@ -27,19 +27,19 @@
 from typing import TYPE_CHECKING, Dict, List, Union, Tuple, Sequence, Optional, Type
 from functools import partial
 
-from electrum_ltc.plugin import BasePlugin, hook, Device, DeviceMgr, DeviceInfo
-from electrum_ltc.i18n import _
-from electrum_ltc.bitcoin import is_address, opcodes
-from electrum_ltc.util import bfh, versiontuple, UserFacingException
-from electrum_ltc.transaction import TxOutput, Transaction, PartialTransaction, PartialTxInput, PartialTxOutput
-from electrum_ltc.bip32 import BIP32Node
-from electrum_ltc.storage import get_derivation_used_for_hw_device_encryption
-from electrum_ltc.keystore import Xpub, Hardware_KeyStore
+from electrum_bynd.plugin import BasePlugin, hook, Device, DeviceMgr, DeviceInfo
+from electrum_bynd.i18n import _
+from electrum_bynd.bitcoin import is_address, opcodes
+from electrum_bynd.util import bfh, versiontuple, UserFacingException
+from electrum_bynd.transaction import TxOutput, Transaction, PartialTransaction, PartialTxInput, PartialTxOutput
+from electrum_bynd.bip32 import BIP32Node
+from electrum_bynd.storage import get_derivation_used_for_hw_device_encryption
+from electrum_bynd.keystore import Xpub, Hardware_KeyStore
 
 if TYPE_CHECKING:
     import threading
-    from electrum_ltc.wallet import Abstract_Wallet
-    from electrum_ltc.base_wizard import BaseWizard
+    from electrum_bynd.wallet import Abstract_Wallet
+    from electrum_bynd.base_wizard import BaseWizard
 
 
 class HW_PluginBase(BasePlugin):

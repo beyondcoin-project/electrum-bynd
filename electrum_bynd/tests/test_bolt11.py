@@ -4,9 +4,9 @@ from binascii import unhexlify, hexlify
 import pprint
 import unittest
 
-from electrum_ltc.lnaddr import shorten_amount, unshorten_amount, LnAddr, lnencode, lndecode, u5_to_bitarray, bitarray_to_u5
-from electrum_ltc.segwit_addr import bech32_encode, bech32_decode
-from electrum_ltc.lnutil import UnknownEvenFeatureBits, derive_payment_secret_from_payment_preimage
+from electrum_bynd.lnaddr import shorten_amount, unshorten_amount, LnAddr, lnencode, lndecode, u5_to_bitarray, bitarray_to_u5
+from electrum_bynd.segwit_addr import bech32_encode, bech32_decode
+from electrum_bynd.lnutil import UnknownEvenFeatureBits, derive_payment_secret_from_payment_preimage
 
 from . import ElectrumTestCase
 
@@ -65,7 +65,7 @@ class TestBolt11(ElectrumTestCase):
             LnAddr(paymenthash=RHASH, tags=[('d', '')]),
             LnAddr(paymenthash=RHASH, amount=Decimal('0.001'), tags=[('d', '1 cup coffee'), ('x', 60)]),
             LnAddr(paymenthash=RHASH, amount=Decimal('1'), tags=[('h', longdescription)]),
-            LnAddr(paymenthash=RHASH, currency='tltc', tags=[('f', 'mk2QpYatsKicvFVuTAQLBryyccRXMUaGHP'), ('h', longdescription)]),
+            LnAddr(paymenthash=RHASH, currency='tbynd', tags=[('f', 'mk2QpYatsKicvFVuTAQLBryyccRXMUaGHP'), ('h', longdescription)]),
             LnAddr(paymenthash=RHASH, amount=24, tags=[
                 ('r', [(unhexlify('029e03a901b85534ff1e92c43c74431f7ce72046060fcf7a95c37e148f78c77255'), unhexlify('0102030405060708'), 1, 20, 3),
                        (unhexlify('039e03a901b85534ff1e92c43c74431f7ce72046060fcf7a95c37e148f78c77255'), unhexlify('030405060708090a'), 2, 30, 4)]),

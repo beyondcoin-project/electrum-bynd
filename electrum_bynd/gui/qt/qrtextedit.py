@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QFileDialog
 
-from electrum_ltc.i18n import _
-from electrum_ltc.plugin import run_hook
+from electrum_bynd.i18n import _
+from electrum_bynd.plugin import run_hook
 
 from .util import ButtonsTextEdit, MessageBoxMixin, ColorScheme, get_parent_main_window
 
@@ -59,7 +59,7 @@ class ScanQRTextEdit(ButtonsTextEdit, MessageBoxMixin):
             self.setText(data)
 
     def qr_input(self):
-        from electrum_ltc import qrscanner
+        from electrum_bynd import qrscanner
         main_window = get_parent_main_window(self)
         assert main_window
         config = main_window.config

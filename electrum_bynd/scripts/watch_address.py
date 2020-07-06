@@ -3,16 +3,16 @@
 import sys
 import asyncio
 
-from electrum_ltc.network import Network
-from electrum_ltc.util import print_msg, create_and_start_event_loop
-from electrum_ltc.synchronizer import SynchronizerBase
-from electrum_ltc.simple_config import SimpleConfig
+from electrum_bynd.network import Network
+from electrum_bynd.util import print_msg, create_and_start_event_loop
+from electrum_bynd.synchronizer import SynchronizerBase
+from electrum_bynd.simple_config import SimpleConfig
 
 
 try:
     addr = sys.argv[1]
 except Exception:
-    print("usage: watch_address <litecoin_address>")
+    print("usage: watch_address <beyondcoin_address>")
     sys.exit(1)
 
 config = SimpleConfig()

@@ -12,7 +12,7 @@ from kivy.uix.label import Label
 from kivy.uix.dropdown import DropDown
 from kivy.uix.button import Button
 
-from electrum_ltc.gui.kivy.i18n import _
+from electrum_bynd.gui.kivy.i18n import _
 
 
 if TYPE_CHECKING:

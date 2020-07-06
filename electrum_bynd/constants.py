@@ -40,8 +40,8 @@ def read_json(filename, default):
     return r
 
 
-GIT_REPO_URL = "https://github.com/pooler/electrum-ltc"
-GIT_REPO_ISSUES_URL = "https://github.com/pooler/electrum-ltc/issues"
+GIT_REPO_URL = "https://github.com/beyondcoin-project/electrum-bynd"
+GIT_REPO_ISSUES_URL = "https://github.com/beyondcoin-project/electrum-bynd/issues"
 
 
 class AbstractNet:
@@ -61,17 +61,17 @@ class BitcoinMainnet(AbstractNet):
 
     TESTNET = False
     WIF_PREFIX = 0x80
-    ADDRTYPE_P2PKH = 48
-    ADDRTYPE_P2SH = 50
-    SEGWIT_HRP = "ltc"
-    GENESIS = "12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2"
+    ADDRTYPE_P2PKH = 25
+    ADDRTYPE_P2SH = 26
+    SEGWIT_HRP = "bynd"
+    GENESIS = "0a9e3b5fce3aee6e04f06dfd6ad380a6c0f9d8420f53a4ca97845756ee5d56e7"
     DEFAULT_PORTS = {'t': '50001', 's': '50002'}
     DEFAULT_SERVERS = read_json('servers.json', {})
     CHECKPOINTS = read_json('checkpoints.json', [])
-    BLOCK_HEIGHT_FIRST_LIGHTNING_CHANNELS = 497000
+    BLOCK_HEIGHT_FIRST_LIGHTNING_CHANNELS = 10000
 
     XPRV_HEADERS = {
-        'standard':    0x0488ade4,  # xprv
+        'standard':    0xff88ade4,  # xprv
         'p2wpkh-p2sh': 0x049d7878,  # yprv
         'p2wsh-p2sh':  0x0295b005,  # Yprv
         'p2wpkh':      0x04b2430c,  # zprv
@@ -79,7 +79,7 @@ class BitcoinMainnet(AbstractNet):
     }
     XPRV_HEADERS_INV = inv_dict(XPRV_HEADERS)
     XPUB_HEADERS = {
-        'standard':    0x0488b21e,  # xpub
+        'standard':    0xff88b21e,  # xpub
         'p2wpkh-p2sh': 0x049d7cb2,  # ypub
         'p2wsh-p2sh':  0x0295b43f,  # Ypub
         'p2wpkh':      0x04b24746,  # zpub
@@ -98,16 +98,16 @@ class BitcoinTestnet(AbstractNet):
 
     TESTNET = True
     WIF_PREFIX = 0xbf
-    ADDRTYPE_P2PKH = 111
+    ADDRTYPE_P2PKH = 85
     ADDRTYPE_P2SH = 58
-    SEGWIT_HRP = "tltc"
-    GENESIS = "4966625a4b2851d9fdee139e56211a0d88575f59ed816ff5e6a63deb4e3e29a0"
+    SEGWIT_HRP = "tbynd"
+    GENESIS = "e4c23a189582c0a7719569717bfeb59b478a20367c5b36dd6fb18b7df4ecab51"
     DEFAULT_PORTS = {'t': '51001', 's': '51002'}
     DEFAULT_SERVERS = read_json('servers_testnet.json', {})
     CHECKPOINTS = read_json('checkpoints_testnet.json', [])
 
     XPRV_HEADERS = {
-        'standard':    0x04358394,  # tprv
+        'standard':    0xff358394,  # tprv
         'p2wpkh-p2sh': 0x044a4e28,  # uprv
         'p2wsh-p2sh':  0x024285b5,  # Uprv
         'p2wpkh':      0x045f18bc,  # vprv
@@ -115,7 +115,7 @@ class BitcoinTestnet(AbstractNet):
     }
     XPRV_HEADERS_INV = inv_dict(XPRV_HEADERS)
     XPUB_HEADERS = {
-        'standard':    0x043587cf,  # tpub
+        'standard':    0xff3587cf,  # tpub
         'p2wpkh-p2sh': 0x044a5262,  # upub
         'p2wsh-p2sh':  0x024289ef,  # Upub
         'p2wpkh':      0x045f1cf6,  # vpub
@@ -132,8 +132,8 @@ class BitcoinTestnet(AbstractNet):
 
 class BitcoinRegtest(BitcoinTestnet):
 
-    SEGWIT_HRP = "rltc"
-    GENESIS = "530827f38f93b43ed12af0b3ad25a288dc02ed74d6d7857862df51fc56c416f9"
+    SEGWIT_HRP = "rbynd"
+    GENESIS = "af6448d165f850f94accc66e7d763a656da14413579f8cda8ee4176dddfd4bed"
     DEFAULT_SERVERS = read_json('servers_regtest.json', {})
     CHECKPOINTS = []
     LN_DNS_SEEDS = []

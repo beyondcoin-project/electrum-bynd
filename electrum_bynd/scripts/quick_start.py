@@ -1,14 +1,14 @@
 import os
 
-from electrum_ltc.simple_config import SimpleConfig
-from electrum_ltc import constants
-from electrum_ltc.daemon import Daemon
-from electrum_ltc.storage import WalletStorage
-from electrum_ltc.wallet import Wallet, create_new_wallet
-from electrum_ltc.commands import Commands
+from electrum_bynd.simple_config import SimpleConfig
+from electrum_bynd import constants
+from electrum_bynd.daemon import Daemon
+from electrum_bynd.storage import WalletStorage
+from electrum_bynd.wallet import Wallet, create_new_wallet
+from electrum_bynd.commands import Commands
 
 
-config = SimpleConfig({"testnet": True})  # to use ~/.electrum-ltc/testnet as datadir
+config = SimpleConfig({"testnet": True})  # to use ~/.electrum-bynd/testnet as datadir
 constants.set_testnet()  # to set testnet magic bytes
 daemon = Daemon(config, listen_jsonrpc=False)
 network = daemon.network

@@ -1,8 +1,8 @@
 from functools import partial
 
-from electrum_ltc.i18n import _
-from electrum_ltc.plugin import hook
-from electrum_ltc.wallet import Standard_Wallet, Abstract_Wallet
+from electrum_bynd.i18n import _
+from electrum_bynd.plugin import hook
+from electrum_bynd.wallet import Standard_Wallet, Abstract_Wallet
 
 from ..hw_wallet.qt import QtHandlerBase, QtPluginBase
 from ..hw_wallet.plugin import only_hook_if_libraries_available

@@ -1,8 +1,8 @@
 from typing import NamedTuple, Union
 
-from electrum_ltc import transaction, bitcoin
-from electrum_ltc.transaction import convert_raw_tx_to_hex, tx_from_any, Transaction, PartialTransaction
-from electrum_ltc.util import bh2u, bfh
+from electrum_bynd import transaction, bitcoin
+from electrum_bynd.transaction import convert_raw_tx_to_hex, tx_from_any, Transaction, PartialTransaction
+from electrum_bynd.util import bh2u, bfh
 
 from . import ElectrumTestCase
 

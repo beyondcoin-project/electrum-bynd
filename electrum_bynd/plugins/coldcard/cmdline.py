@@ -1,6 +1,6 @@
-from electrum_ltc.plugin import hook
-from electrum_ltc.util import print_msg, raw_input, print_stderr
-from electrum_ltc.logging import get_logger
+from electrum_bynd.plugin import hook
+from electrum_bynd.util import print_msg, raw_input, print_stderr
+from electrum_bynd.logging import get_logger
 
 from ..hw_wallet.cmdline import CmdLineHandler
 

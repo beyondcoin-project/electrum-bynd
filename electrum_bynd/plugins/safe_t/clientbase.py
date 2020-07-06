@@ -2,13 +2,13 @@ import time
 from struct import pack
 from typing import Optional
 
-from electrum_ltc import ecc
-from electrum_ltc.i18n import _
-from electrum_ltc.util import UserCancelled
-from electrum_ltc.keystore import bip39_normalize_passphrase
-from electrum_ltc.bip32 import BIP32Node, convert_bip32_path_to_list_of_uint32
-from electrum_ltc.logging import Logger
-from electrum_ltc.plugins.hw_wallet.plugin import HardwareClientBase, HardwareHandlerBase
+from electrum_bynd import ecc
+from electrum_bynd.i18n import _
+from electrum_bynd.util import UserCancelled
+from electrum_bynd.keystore import bip39_normalize_passphrase
+from electrum_bynd.bip32 import BIP32Node, convert_bip32_path_to_list_of_uint32
+from electrum_bynd.logging import Logger
+from electrum_bynd.plugins.hw_wallet.plugin import HardwareClientBase, HardwareHandlerBase
 
 
 class GuiMixin(object):
@@ -74,7 +74,7 @@ class GuiMixin(object):
             msg = _("Enter a passphrase to generate this wallet.  Each time "
                     "you use this wallet your {} will prompt you for the "
                     "passphrase.  If you forget the passphrase you cannot "
-                    "access the litecoins in the wallet.").format(self.device)
+                    "access the beyondcoins in the wallet.").format(self.device)
         else:
             msg = _("Enter the passphrase to unlock this wallet:")
         passphrase = self.handler.get_passphrase(msg, self.creating_wallet)

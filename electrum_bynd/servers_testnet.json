@@ -1,11 +1,11 @@
 {
-    "electrum-ltc.bysh.me": {
+    "test-e1.electrum-bynd.com": {
         "pruning": "-",
         "s": "51002",
         "t": "51001",
         "version": "1.4.2"
     },
-    "electrum.ltc.xurious.com": {
+    "test-e2.electrum-bynd.com": {
         "pruning": "-",
         "s": "51002",
         "t": "51001",

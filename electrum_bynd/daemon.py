@@ -364,7 +364,7 @@ class PayServer(Logger):
         if not request:
             return web.HTTPNotFound()
         pr = make_request(self.config, request)
-        return web.Response(body=pr.SerializeToString(), content_type='application/litecoin-paymentrequest')
+        return web.Response(body=pr.SerializeToString(), content_type='application/beyondcoin-paymentrequest')
 
     async def get_status(self, request):
         ws = web.WebSocketResponse()
@@ -555,7 +555,7 @@ class Daemon(Logger):
             gui_name = 'qt'
         self.logger.info(f'launching GUI: {gui_name}')
         try:
-            gui = __import__('electrum_ltc.gui.' + gui_name, fromlist=['electrum_ltc'])
+            gui = __import__('electrum_bynd.gui.' + gui_name, fromlist=['electrum_bynd'])
             self.gui_object = gui.ElectrumGui(config, self, plugins)
             self.gui_object.main()
         except BaseException as e:

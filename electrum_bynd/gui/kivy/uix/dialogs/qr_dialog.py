@@ -6,7 +6,7 @@ from kivy.core.clipboard import Clipboard
 from kivy.app import App
 from kivy.clock import Clock
 
-from electrum_ltc.gui.kivy.i18n import _
+from electrum_bynd.gui.kivy.i18n import _
 
 if TYPE_CHECKING:
     from ...main_window import ElectrumWindow
@@ -47,7 +47,7 @@ Builder.load_string('''
                     on_release:
                         root.copy_to_clipboard()
                 IconButton:
-                    icon: 'atlas://electrum_ltc/gui/kivy/theming/light/share'
+                    icon: 'atlas://electrum_bynd/gui/kivy/theming/light/share'
                     size_hint: 0.6, None
                     height: '48dp'
                     on_release: root.do_share()

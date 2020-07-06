@@ -7,7 +7,7 @@ from kivy.lang import Builder
 from decimal import Decimal
 from kivy.uix.popup import Popup
 
-from electrum_ltc.gui.kivy.i18n import _
+from electrum_bynd.gui.kivy.i18n import _
 from ...util import address_colors
 
 if TYPE_CHECKING:

@@ -1,6 +1,6 @@
 import dns
 
-from electrum_ltc import dnssec
+from electrum_bynd import dnssec
 
 from . import ElectrumTestCase
 

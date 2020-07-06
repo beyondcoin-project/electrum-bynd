@@ -10,7 +10,7 @@ from base64 import b64decode
 from binascii import a2b_hex, b2a_hex
 from struct import pack, unpack
 
-from electrum_ltc.transaction import Transaction
+from electrum_bynd.transaction import Transaction
 
 # BIP-174 (aka PSBT) defined values
 #

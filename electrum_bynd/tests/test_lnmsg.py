@@ -1,12 +1,12 @@
 import io
 
-from electrum_ltc.lnmsg import (read_bigsize_int, write_bigsize_int, FieldEncodingNotMinimal,
+from electrum_bynd.lnmsg import (read_bigsize_int, write_bigsize_int, FieldEncodingNotMinimal,
                                 UnexpectedEndOfStream, LNSerializer, UnknownMandatoryTLVRecordType,
                                 MalformedMsg, MsgTrailingGarbage, MsgInvalidFieldOrder, encode_msg,
                                 decode_msg, UnexpectedFieldSizeForEncoder)
-from electrum_ltc.util import bfh
-from electrum_ltc.lnutil import ShortChannelID, LnFeatures
-from electrum_ltc import constants
+from electrum_bynd.util import bfh
+from electrum_bynd.lnutil import ShortChannelID, LnFeatures
+from electrum_bynd import constants
 
 from . import TestCaseForTestnet
 

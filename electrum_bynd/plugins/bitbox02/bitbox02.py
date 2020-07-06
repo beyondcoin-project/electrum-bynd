@@ -5,22 +5,22 @@
 import hid
 from typing import TYPE_CHECKING, Dict, Tuple, Optional, List, Any, Callable
 
-from electrum_ltc import bip32, constants
-from electrum_ltc.i18n import _
-from electrum_ltc.keystore import Hardware_KeyStore
-from electrum_ltc.transaction import PartialTransaction
-from electrum_ltc.wallet import Standard_Wallet, Multisig_Wallet, Deterministic_Wallet
-from electrum_ltc.util import bh2u, UserFacingException
-from electrum_ltc.base_wizard import ScriptTypeNotSupported, BaseWizard
-from electrum_ltc.logging import get_logger
-from electrum_ltc.plugin import Device, DeviceInfo
-from electrum_ltc.simple_config import SimpleConfig
-from electrum_ltc.json_db import StoredDict
-from electrum_ltc.storage import get_derivation_used_for_hw_device_encryption
-from electrum_ltc._ltcbitcoin import OnchainOutputType
+from electrum_bynd import bip32, constants
+from electrum_bynd.i18n import _
+from electrum_bynd.keystore import Hardware_KeyStore
+from electrum_bynd.transaction import PartialTransaction
+from electrum_bynd.wallet import Standard_Wallet, Multisig_Wallet, Deterministic_Wallet
+from electrum_bynd.util import bh2u, UserFacingException
+from electrum_bynd.base_wizard import ScriptTypeNotSupported, BaseWizard
+from electrum_bynd.logging import get_logger
+from electrum_bynd.plugin import Device, DeviceInfo
+from electrum_bynd.simple_config import SimpleConfig
+from electrum_bynd.json_db import StoredDict
+from electrum_bynd.storage import get_derivation_used_for_hw_device_encryption
+from electrum_bynd._byndbitcoin import OnchainOutputType
 
-import electrum_ltc.bitcoin as bitcoin
-import electrum_ltc.ecc as ecc
+import electrum_bynd.bitcoin as bitcoin
+import electrum_bynd.ecc as ecc
 
 from ..hw_wallet import HW_PluginBase, HardwareClientBase
 
@@ -185,8 +185,8 @@ class BitBox02Client(HardwareClientBase):
 
     def coin_network_from_electrum_network(self) -> int:
         if constants.net.TESTNET:
-            return bitbox02.btc.TLTC
-        return bitbox02.btc.LTC
+            return bitbox02.btc.TBYND
+        return bitbox02.btc.BYND
 
     def get_password_for_storage_encryption(self) -> str:
         derivation = get_derivation_used_for_hw_device_encryption()
@@ -210,17 +210,17 @@ class BitBox02Client(HardwareClientBase):
         coin_network = self.coin_network_from_electrum_network()
 
         if xtype == "p2wpkh":
-            if coin_network == bitbox02.btc.LTC:
+            if coin_network == bitbox02.btc.BYND:
                 out_type = bitbox02.btc.BTCPubRequest.ZPUB
             else:
                 out_type = bitbox02.btc.BTCPubRequest.VPUB
         elif xtype == "p2wpkh-p2sh":
-            if coin_network == bitbox02.btc.LTC:
+            if coin_network == bitbox02.btc.BYND:
                 out_type = bitbox02.btc.BTCPubRequest.YPUB
             else:
                 out_type = bitbox02.btc.BTCPubRequest.UPUB
         elif xtype == "p2wsh":
-            if coin_network == bitbox02.btc.LTC:
+            if coin_network == bitbox02.btc.BYND:
                 out_type = bitbox02.btc.BTCPubRequest.CAPITAL_ZPUB
             else:
                 out_type = bitbox02.btc.BTCPubRequest.CAPITAL_VPUB
@@ -348,9 +348,9 @@ class BitBox02Client(HardwareClientBase):
                 "Need to setup communication first before attempting any BitBox02 calls"
             )
 
-        coin = bitbox02.btc.LTC
+        coin = bitbox02.btc.BYND
         if constants.net.TESTNET:
-            coin = bitbox02.btc.TLTC
+            coin = bitbox02.btc.TBYND
 
         tx_script_type = None
 

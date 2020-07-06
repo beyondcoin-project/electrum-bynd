@@ -1,5 +1,5 @@
-from electrum_ltc.util import print_stderr, raw_input
-from electrum_ltc.logging import get_logger
+from electrum_bynd.util import print_stderr, raw_input
+from electrum_bynd.logging import get_logger
 
 from .plugin import HardwareHandlerBase
 

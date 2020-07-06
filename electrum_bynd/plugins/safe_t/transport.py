@@ -1,4 +1,4 @@
-from electrum_ltc.logging import get_logger
+from electrum_bynd.logging import get_logger
 
 
 _logger = get_logger(__name__)
