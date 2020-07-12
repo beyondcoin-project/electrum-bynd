@@ -276,8 +276,8 @@ class TestStorageUpgrade(WalletTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        from electrum_ltc.plugin import Plugins
-        from electrum_ltc.simple_config import SimpleConfig
+        from electrum_bynd.plugin import Plugins
+        from electrum_bynd.simple_config import SimpleConfig
 
         cls.__electrum_path = tempfile.mkdtemp()
         config = SimpleConfig({'electrum_path': cls.__electrum_path})
