@@ -715,7 +715,7 @@ mainnet_block_explorers = {
                         {'tx': '#/transaction/', 'addr': '#/address/'}),
     'chainz.cryptoid.info': ('https://chainz.cryptoid.info/',
                         {'tx': 'bynd/tx.dws?', 'addr': '/bynd/address.dws?'}),
-    'system default': ('blockchain://5e3277b2f6d988288e2acda68d4894d3b62391dfd7f475c553592954c743f7a5 /',
+    'system default': ('blockchain://5e3277b2f6d988288e2acda68d4894d3b62391dfd7f475c553592954c743f7a5/',
                         {'tx': 'tx/', 'addr': 'address/'}),
 }
 
