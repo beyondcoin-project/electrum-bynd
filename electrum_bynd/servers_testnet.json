@@ -3,12 +3,12 @@
         "pruning": "-",
         "s": "51002",
         "t": "51001",
-        "version": "1.4.2"
+        "version": "1.16.0"
     },
     "test-e2.electrum-bynd.com": {
         "pruning": "-",
         "s": "51002",
         "t": "51001",
-        "version": "1.4.2"
+        "version": "1.16.0"
     }
 }

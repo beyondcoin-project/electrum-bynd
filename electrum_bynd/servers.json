@@ -1,5 +1,5 @@
 {
-    "e1.electrum-bynd.com": {
+    "e1.electrum-bynd.com:t": {
         "pruning": "-",
         "s": "50004",
         "t": "50001",
