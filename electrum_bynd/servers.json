@@ -3,12 +3,18 @@
         "pruning": "-",
         "s": "50004",
         "t": "50001",
-        "version": "1.4"
+        "version": "1.16.0"
     },
-    "e2.electrun-bynd.com": {
+    "e2.electrum-bynd.com": {
         "pruning": "-",
         "s": "50004",
-        "t": "50003",
-        "version": "1.4"
+        "t": "50001",
+        "version": "1.16.0"
+    },
+    "e3.electrum-bynd.com": {
+        "pruning": "-",
+        "s": "50004",
+        "t": "50001",
+        "version": "1.16.0"
     }
 }
