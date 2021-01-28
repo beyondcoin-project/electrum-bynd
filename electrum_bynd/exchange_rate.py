@@ -23,7 +23,7 @@ from .logging import Logger
 
 
 DEFAULT_ENABLED = False
-DEFAULT_CURRENCY = "EUR"
+DEFAULT_CURRENCY = "USD"
 DEFAULT_EXCHANGE = "CoinGecko"  # default exchange should ideally provide historical rates
 
 

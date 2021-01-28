@@ -711,35 +711,17 @@ def time_difference(distance_in_time, include_seconds):
         return "over %d years" % (round(distance_in_minutes / 525600))
 
 mainnet_block_explorers = {
-    'Bchain.info': ('https://bchain.info/',
-                        {'tx': 'BYND/tx/', 'addr': 'BYND/addr/'}),
-    'Bitaps.com': ('https://ltc.bitaps.com/',
-                        {'tx': '', 'addr': ''}),
-    'Bitupper Explorer': ('https://bitupper.com/en/explorer/litecoin/',
-                        {'tx': 'transactions/', 'addr': 'addresses/'}),
-    'Blockchair.com': ('https://blockchair.com/litecoin/',
-                        {'tx': 'transaction/', 'addr': 'address/'}),
-    'BlockCypher.com': ('https://live.blockcypher.com/ltc/',
-                        {'tx': 'tx/', 'addr': 'address/'}),
-    'explorer.litecoin.net': ('http://explorer.litecoin.net/',
-                        {'tx': 'tx/', 'addr': 'address/'}),
-    'BeyondCore': ('https://insight.beyondcore.io/',
-                        {'tx': 'tx/', 'addr': 'address/'}),
-    'SoChain': ('https://chain.so/',
-                        {'tx': 'tx/LTC/', 'addr': 'address/LTC/'}),
-    'system default': ('blockchain://12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2/',
+    'Beyondexplorer.com': ('https://beyondexplorer.com/',
+                        {'tx': '#/transaction/', 'addr': '#/address/'}),
+    'chainz.cryptoid.info': ('https://chainz.cryptoid.info/',
+                        {'tx': 'bynd/tx.dws?', 'addr': '/bynd/address.dws?'}),
+    'system default': ('blockchain://5e3277b2f6d988288e2acda68d4894d3b62391dfd7f475c553592954c743f7a5 /',
                         {'tx': 'tx/', 'addr': 'address/'}),
 }
 
 testnet_block_explorers = {
-    'Bitaps.com': ('https://tltc.bitaps.com/',
-                       {'tx': '', 'addr': ''}),
-    'BeyondCore': ('https://testnet.beyondcore.io/',
-                        {'tx': 'tx/', 'addr': 'address/'}),
-    'SoChain': ('https://chain.so/',
-                        {'tx': 'tx/LTCTEST/', 'addr': 'address/LTCTEST/'}),
-    'system default': ('blockchain://4966625a4b2851d9fdee139e56211a0d88575f59ed816ff5e6a63deb4e3e29a0/',
-                       {'tx': 'tx/', 'addr': 'address/'}),
+    'Beyondexplorer.com': ('https://testnet.beyondexplorer.com/',
+                       {'tx': '#/transaction/', 'addr': '#/address/'}),
 }
 
 def block_explorer_info():
@@ -748,7 +730,7 @@ def block_explorer_info():
 
 def block_explorer(config: 'SimpleConfig') -> str:
     from . import constants
-    default_ = 'Blockchair.com' if not constants.net.TESTNET else 'BeyondCore'
+    default_ = 'Beyondexplorer.com' if not constants.net.TESTNET else 'chainz.cryptoid.info'
     be_key = config.get('block_explorer', default_)
     be = block_explorer_info().get(be_key)
     return be_key if be is not None else default_
